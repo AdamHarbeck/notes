@@ -37,6 +37,80 @@ JDK/JRE/JVM
 		- Highlevel code(Java source code) (.java) -> javac [.java file] -> Bytecode (intermediary language) (.class file)
 	- Running java
 		- Bytecode (intermediary language) (.class file) -> java [name of file, no extension]
+			- can pass in arguments:
+				 java [name of file, no extension] [args separated by spaces]
 
+Variables
+	- used to store data
+	- 2 types of variables: primitive and reference types
+		- primitives: (stored in the stack)
+			- whole numbers: byte, short, int, long
+			- floating points: float, double
+			- character: char
+			- boolean
+		- reference types: (reference an object stored in the heap)
+			- Objects
+				- Strings 
+				- Wrapper classes
+					- a way to treat primitives datatypes like objects
+						- Autoboxing: Automatic conversion between a primitive to its wrapper class
+						- AutoUnboxing: Automatic conversion of a wrapper class into its primitive
+				- Arrays
 
+Casting
+	- convert objects or variables from one type to another
+		- Widening
+			- Automatic conversion from smaller primitive type to bigger primitive type
+			- Implicit
+		- Narrowing
+			- Conversion from a bigger primitive type to a smaller primitive type
+			- Explicit
 
+Arrays
+	- linear contiguous container of a same datatype
+		- can either b primitives or reference types
+		- contiguous blocks in memory
+			- of a fixed
+	- Elements in an array can be accessed via indexes
+		- starts at 0
+
+Methods
+	- reusable block of code that can take in arguments and can return something
+		- void: no return
+		- return data;
+	- main method
+		- entrypoint of the JVM
+		- public static void main(String[] args)
+	- calling methods 
+		- static method call: ClassName.methodName();
+		- non-static method call: objectVarname.methodName();
+
+Class
+	- Blueprint for objects, it defines its states and behaviors
+		- states refers to properties/fields
+		- behaviors refer to method
+		- objects are instantiated using the new keyword which invokes the appropriate constructor
+	- Constructors
+		- type of methods that have no return types and are used to create an instance of a class
+		- called using the new keyword
+		- default constructor:
+			- constructor provided by the compiler if none are provided
+		- no-args constructor:
+			- constructor with no parameters
+		- parameterized/overloaded constructors:
+			- constructors with parameters
+
+Scopes of a variables
+	- DO NOT CONFUSE THIS WITH ACCESS MODIFIERS
+	- Lifetime of a variable within the application
+	- static/class scope
+		- variables live throughout the lifetime of an application
+	- instance/object scope
+		- variables live throughout the lifetime of that object
+		- it begins when the object is instantiated, and ends when the object is garbage collected
+	- method scope
+		- variable lives within the scope of the methods 
+		- include the parameters and variables declared within that scope
+	- loop/block scope
+		- variables exist only during the execution of a block
+		- variables declared within a loop/conditional statement
