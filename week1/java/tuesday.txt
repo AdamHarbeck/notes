@@ -1,0 +1,42 @@
+Java
+	- Platform independent
+		- Write Once, Run Anywhere (WORA)
+			- due to the JVM
+	- Mature language
+		- Oracle Supported
+		- lot of documentation
+		- lot of resources
+			- Stack Overflow
+			- Tutorials
+	- Compiled Language
+		- Optimization
+		- Compile time Error Checking
+	- Automatic garbage collection
+		- no need to manually allocate and deallocate memory
+			- garbage collector
+	- Multithreading
+		- running processes concurently
+	- Strictly type
+	- OOP Language
+		
+
+JDK/JRE/JVM
+	- Java Development Kit
+		- Provides an environment to develop and execute a Java Program
+		- Contains the compiler (javac), tools for development 
+		- Contains the JRE and JVM
+	- Java Runtime Environment
+		- All that's needed to RUN an application
+		- Java core libraries
+		- Contains the JVM
+	- Java Virtual Machine
+		- Takes the compiled code (from the compiler) and executes it from the main method
+		- Different OS have different JVM implementation
+
+	- Compilation process:
+		- Highlevel code(Java source code) (.java) -> javac [.java file] -> Bytecode (intermediary language) (.class file)
+	- Running java
+		- Bytecode (intermediary language) (.class file) -> java [name of file, no extension]
+
+
+
