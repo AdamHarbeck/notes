@@ -74,5 +74,31 @@ public class ScannerDriver {
 		 *  
 		 *  this menu should repeat until the user decides to exit
 		 */
+		
+		boolean run = true;
+		while(run) {
+			System.out.println("Please select an option:\n"
+								+ "1: to retrieve a random number\n"
+								+ "2: to reverse a word\n"
+								+ "3: to exit the program");
+			String input = scan.nextLine();
+			switch(input) {
+			case "1": 
+				System.out.println("Here's a random number: " + Math.round(Math.random() * 100));
+				break;
+			case "2":
+				System.out.println("Please enter a word:");
+				StringBuffer sb = new StringBuffer(scan.nextLine());
+				System.out.println("Here is your reversed word: " + sb.reverse());
+				break;
+			case "3":
+				run = false;
+				System.out.println("Goodbye.");
+				break;
+			default:
+				System.out.println("Invalid option.");
+			}
+			
+		}
 	}
 }
