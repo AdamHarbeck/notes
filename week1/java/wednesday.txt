@@ -1,0 +1,64 @@
+Java Memory Management
+	- Stack
+		- Datastructure that follows a LIFO pattern (Last In First Out)
+		- Holds primitive and reference variables
+		- once the scope of a method is over, the variable "pops" off
+			- naturally managed
+	- Heap
+		- Object storage
+		- almost anything that is not a primitive/ref type is an object
+		- String Pool
+			- for String literals
+				- String s = "s";
+		- Managed by the Garbage collector
+	- Java is a pass by value language
+		- passing a variable into a method uses the value of the variable rather than the variable itself
+
+Garbage Collection
+	- free up memory/resources once they're no longer referenced
+	- Garbage Collector is a daemon thread
+		- thread running in the background
+		- removes objects without references in the heap
+	- Garbage cannot be forced, it can only be suggested using System.gc()
+	- finalize() - the last method called upon an object before it is garbage collected
+		- people don't really use this anymore
+
+Packages
+	- folder/directory
+		- structure
+	- resolve naming conflicts
+	- used to define access
+		- using access modifiers
+	- group items based on what they do/logical structure
+		- packages are usually organizes based on the problem that they solve
+			- separation of concern
+				- a package that holds models/entities
+				- a package that holds all classes related to data access/storage/interacting with a database
+				- a package that holds all classes related to business logic (services)
+				- a package that holds all classes related to interacting with the web
+
+String
+	- String is a class and therefore we have String objects
+		- array of characters
+	- Strings are usually stored in the String Pool (which is in the heap)
+		- this allows Java to reuse the same String object for repeated instances
+			- String s = "s"; // stored in the String Pool
+			- String s = new String("s"); // stored in the Heap, but not string pool
+		- .intern()
+			- checks if a String exists in the string pool if yes returns a reference to it, otherwise creates it in the pool and rreturns that reference
+	- immutable
+		- value of a string cannot be changed
+
+
+StringBuilder/StringBuffer
+	- mutable alternatives to Strings with methods that allow for manipulation
+	- StringBuilder - not ThreadSafe, faster
+	- StringBuffer - ThreadSafe, slower
+
+Scanner
+	- Class in Java that can be used to capture user input via the console
+		- files, input streams...
+	- can parse for different types, read a line...
+	- MAKE SURE TO CLOSE YOUR SCANNER WHEN DONE USING IT
+		- avoid memory leaks
+	- PRO TIP: use one scanner per input stream, otherwise might run into issues
