@@ -1,6 +1,6 @@
 # Some kind of Shop
 
-## Description (Due: 06/15/2022)
+## Description (Due: 06/29/2022)
 
 The Some kind of Shop app is a console-based application that facilitates the purchasing of some kind of item, the choice is up to you. An employee can add these items to an inventory and manage offers for those those items while a customer can view the available items and make offers.
 	
