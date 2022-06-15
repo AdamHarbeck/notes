@@ -14,7 +14,7 @@ The Some kind of Shop app is a console-based application that facilitates the pu
 3. Data Access is performed through the use of JDBC in a data layer consisting of Data Access Objects.
 4. All input is received using the java.util.Scanner class.
 5. All public service layer methods must have at least one JUnit test.
-6. Log4j is implemented to log events to a file.
+6. Logback is implemented to log events to a file.
 
 
 ## User Stories
