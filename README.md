@@ -4,6 +4,19 @@
 The environment setup guide for week 1 and 2 can be found [here](https://github.com/061322-VA-JavaMSA/notes/blob/main/setup/env_guide.md).*
 
 ## Training Calendar
+
+* 06/29
+    * Project 0 Presentations (TBD)
+
+<hr>
+
+* 06/22
+    * QC (11am ET) - on week 1 topics
+
+<hr>
+
+* 06/17
+    * Week 1 Wrap-Up Session (12pm ET) - zoom link TBD
 * 06/14
     * QC Orientation(10-10:45am ET): https://revature.zoom.us/j/96121243699?pwd=djhsQzJiMnp0VUwvcGZLMmNRb1dQQT09  
     * Cohort advisor intro meeting(2-2:10pm ET): regular zoom link
