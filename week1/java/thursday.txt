@@ -76,3 +76,53 @@ Non-access modifiers
 			- a variable cannot be REASSIGNED once initialized
 		- in front of a method
 			- that method cannot be overriden by a subclass
+
+Datastructures
+	- Solution to work with data
+
+Collection
+	- is an interface that is considered the "super" interface from which every collection (List, Set, Queue) originate from.
+		- declares methods implemented in all collection concrete classes"
+			- add()
+			- remove()
+			- contains()
+			- size()
+	- Only work with objects (do not work with primitive variables, use Wrapper class instead)
+	- Collection (I) is not to be confused with Collections(C)
+		- Collections is a class that provides util methods to work with collections
+	- Implements Iterable, allows for a collection to be iterated over using an iterator
+	- List
+		- Interface that extends from Collection, that they can hold duplicate values, usually index based
+		- Concrete implementations
+			- ArrayList
+				- Dynamically sized array, in which elements can be added and removed
+				- ArrayList leverage indexes which makes them more efficient for retrieval operations
+			- LinkedList
+				- Consists in a series of nodes which store date and a reference to the next node
+				- better for insertion/deletion
+	- Set
+		- interface extends collection, cannot hold duplicate values
+		- HashSet
+			- "unordered", can't guarantee an order 
+		- TreeSet
+			- ordered
+				- follows the "natural" order
+					- can specify a custom order
+	- Queue
+		- interface that extends collection, follows a FIFO order (first in first out)
+		- Concrete implementation
+			- LinkedList
+				- implements both list and Queue
+			- Priority Queues
+				- ordered by priority
+		- Have more queue specific methods
+			- peek
+			- poll
+			- ...
+	- Maps
+		- interface that DOES NOT extend from Collection
+			- leverages a key value pair system
+			- they do not implement the iterable interface
+		- concrete implementations
+			- HashMap
+			- TreeMap
