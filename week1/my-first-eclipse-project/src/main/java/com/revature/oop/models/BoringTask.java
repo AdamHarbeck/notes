@@ -1,6 +1,6 @@
 package com.revature.oop.models;
 
-public class BoringTask extends Task{
+public final class BoringTask extends Task{
 
 	public BoringTask() {
 //		super(); //implicit if not put explicitly
@@ -18,5 +18,8 @@ public class BoringTask extends Task{
 				+ ", hashCode()=" + hashCode() + "]";
 	}
 	
+	public void boringTaskSpecificMethod() {
+		System.out.println("This is only for boring Task.");
+	}
 	
 }

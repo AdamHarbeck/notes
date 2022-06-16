@@ -3,11 +3,14 @@ package com.revature.oop.models;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Task {
-
+public abstract class Task {
+	private int id;
 	private String description;
 	private boolean completed;
 	private LocalDate dueDate;
+	private User userAssigned;
+	public final User finalUser = new User(); // in this case, final refers the the location of the object in the heap, tso the fields of that object can be changed
+//	private int userIdAssigned; not the "OOP way"
 
 	public Task() {
 		//super() => to the Object class constructor
@@ -21,6 +24,14 @@ public class Task {
 		this.description = description;
 	}
 
+	public void doTask() {
+		System.out.println("Doing a task.");
+	}
+	
+	public void doTask(String speed) {
+		System.out.println("Doing task at " + speed + " speed.");
+	}
+	
 	public String getDescription() {
 		return description;
 	}
@@ -49,14 +60,25 @@ public class Task {
 		}
 	}
 
-	@Override
-	public String toString() {
-		return "Task [description=" + description + ", completed=" + completed + ", dueDate=" + dueDate + "]";
+	public int getId() {
+		return id;
 	}
 
-	@Override
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public User getUserAssigned() {
+		return userAssigned;
+	}
+
+	public void setUserAssigned(User userAssigned) {
+		this.userAssigned = userAssigned;
+	}
+
+	@Override // annotation just provided information to the compiler
 	public int hashCode() {
-		return Objects.hash(completed, description, dueDate);
+		return Objects.hash(completed, description, dueDate, id, userAssigned);
 	}
 
 	@Override
@@ -69,6 +91,21 @@ public class Task {
 			return false;
 		Task other = (Task) obj;
 		return completed == other.completed && Objects.equals(description, other.description)
-				&& Objects.equals(dueDate, other.dueDate);
+				&& Objects.equals(dueDate, other.dueDate) && id == other.id
+				&& Objects.equals(userAssigned, other.userAssigned);
 	}
+
+	@Override
+	public String toString() {
+		return "Task [id=" + id + ", description=" + description + ", completed=" + completed + ", dueDate=" + dueDate
+				+ ", userAssigned=" + userAssigned + "]";
+	}
+
+	public Task(String description, User userAssigned) {
+		super();
+		this.description = description;
+		this.userAssigned = userAssigned;
+	}
+	
+//	private abstract void doesThisWork(); cannot make abstract method private
 }
