@@ -1,0 +1,54 @@
+Exceptions
+	- represent a condition that prevents a method from completing successfully
+	- Objects created from the Exception class and its subclasses
+		- inherits from the Throwable class
+		- divided into checked/unchecked exception
+			- checked exceptions
+				- "compile time exceptions", code cannot be compiled until the exception is handled
+				- either Exception or its subclasses but not a Runtime Exception
+				- arise from circumstances outside of the programmer's control
+					- ie: FileNotFound, SQLException(from the Database)...
+			- unchecked exceptions
+				- "runtime exceptions", not checked by the compiler
+				- Runtime Exception or its subclasses
+				- arise from coding error/ can usually be prevented with a bit of logic
+
+Error
+	- also extend from Throwable
+	- Identify internal issues that cannot be recovered from
+		- bad practice to handle them/try to catch them
+		- ie: OutofMemoryError, StackOverflow
+
+Exception Handling
+	- try
+		- used to encapsulate "risky code"
+			- statements that may throw a checked exception
+	- catch
+		- used handle exception/ provide behavior in order to handle an exception of a specific type
+		- can provide multiple catch blocks
+			- order from most specific, to least specific or the most generic exception will catch all
+	- finally
+		- executes regardless of the outcome
+			- whether or not an exception is thrown
+		- used to close resources
+		- way to skip the finally block?
+			- System.exit(0);
+	- throws
+		- used in the method signature to "pass the buck"
+		- if there is not enough information to handle an exception properly at the time it's thrown
+	- try-with-resources
+		- java 8 feature
+			- declares and initializes a variable within the try
+		- allows a resource to be closed without needing a finally block
+		- the resource needs to implement the Autoclosable interface 
+
+Throwing an exception
+	- throw new [constructor for exception]();
+
+Custom Exception
+	- extends from the relevant exception
+
+Maven
+	- Project Management Tool and also a Build Automation Tool
+		- handles our dependencies for us
+			- dependency: framework/library written by other developer to be used in your project
