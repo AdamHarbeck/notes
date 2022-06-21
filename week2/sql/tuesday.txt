@@ -1,0 +1,27 @@
+DQL
+	- Data Query Language
+		- "sub-sub" language/ can be considered part of DML
+	- Statements used to retrieve information from tables
+	- SELECT
+		- main operation used for querying data
+			- can use multiple clauses to filter/specify a result further
+		- where
+		- group by
+			- allows for aggregate function
+				- ie: count, sum, average...
+		- having
+			- like a where clause after aggregation
+		- order by
+		- limit
+		- offset
+
+Joins
+	- way to combine rows based on some logical relationship (columns)
+		- inner join/ join: returns all the records that have matching values in both tables
+		- left (outer) join: returns all the record from the left table and matching records from the right table
+		- right (outer) join: returns all the record from the right table and matching records from the lef table
+		- full (outer) join: returns all the records whether there is a match or not from both tables
+		- self join: joins a table with itself to combine data with the same table
+
+	- resources:
+		- https://www.postgresql.org/docs/10/tutorial-join.html
