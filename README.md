@@ -11,7 +11,11 @@ The environment setup guide for week 1 and 2 can be found [here](https://github.
 <hr>
 
 * 06/22
+    * 10-11am - Review
     * QC (11am ET) - on week 1 topics
+        * Go to lunch after QC
+    * Kevin Meetings(2-3pm)
+        * Project work time, we'll start lecture again at 3pm 
 
 <hr>
 

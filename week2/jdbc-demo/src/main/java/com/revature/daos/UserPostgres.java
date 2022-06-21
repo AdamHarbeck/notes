@@ -36,8 +36,27 @@ public class UserPostgres implements UserDAO{
 
 	@Override
 	public User retrieveUserById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from users where id = ?;";
+		User user = null;
+		
+		try(Connection c = ConnectionUtil.getConnectionFromEnv()){
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setInt(1, id); // this refers to the 1st ? in the sql String
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				user = new User();
+				user.setId(rs.getInt("id"));
+				user.setUsername(rs.getString("username"));
+				user.setPassword(rs.getString("password"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
 	}
 
 	@Override
@@ -96,14 +115,49 @@ public class UserPostgres implements UserDAO{
 
 	@Override
 	public boolean updateUser(User u) {
-		// TODO Auto-generated method stub
-		return false;
+		String sql = "update users set username = ?, password = ? where id = ?;";
+		int rowsChanged = -1;
+		
+		try(Connection c = ConnectionUtil.getConnectionFromEnv()){
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setString(1, u.getUsername());
+			ps.setString(2, u.getPassword());
+			ps.setInt(3, u.getId());
+			
+			rowsChanged = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(rowsChanged < 1) {
+			return false;
+		}
+		return true;
 	}
 
 	@Override
 	public boolean deleteUserById(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		String sql = "delete from users where id = ?;";
+		int rowsChanged = -1;
+		try(Connection c = ConnectionUtil.getConnectionFromEnv()){
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setInt(1, id);
+			
+			rowsChanged = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		if(rowsChanged < 1) {
+			return false;
+		}
+		return true;
 	}
 
 }
