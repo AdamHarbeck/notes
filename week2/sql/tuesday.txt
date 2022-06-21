@@ -46,8 +46,23 @@ JDBC
 		- Statement (I)
 			- represent a SQL statement
 			- .executeQuery()
+			- best used when no user input is required
+				- vulnerable to SQL injection
 		- PreparedStatement (I)
+			- represents a SQL statement, has be preprocessed to prevent SQL injection
+			- use methods to set fields
+				- setInt, setString;
 		- ResultSet(I)
 			- represents the results of a query
-			- next(), to iterate over the resulte set
+			- next(), to iterate over the result set
 			- retrieve data from it using .getmethods
+	- SQL Injection
+		- placing malicious code in a SQL statement
+			- select from users where [input];
+				- input = "1; drop table tasks"
+
+DAO
+	- DataAccessObject
+		- Design pattern
+			- programming best practice to address a common programming "issue"/"problem"
+		- used to address decoupling of Java object persistence to a specific class

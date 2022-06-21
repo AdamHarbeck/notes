@@ -1,27 +1,55 @@
 package com.revature;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
+import java.util.Scanner;
+
+import com.revature.exceptions.LoginException;
+import com.revature.models.User;
+import com.revature.services.AuthService;
+import com.revature.services.UserService;
 
 public class Driver {
-
+	
+	static Scanner scan;
+	static AuthService as;
+	static UserService us;
+	
 	public static void main(String[] args) {
-		//String url = "jdbc:[driver]://[url]:[port]/[db-name]";
-		//String url = "jdbc:postgresql://localhost:5432/postgres";
-		String url = "jdbc:postgresql://database-1.cllvqmegtmuc.us-east-1.rds.amazonaws.com:5432/postgres";
-		String username = "postgres";
-		String password = "p4ssw0rd";
+		scan = new Scanner(System.in);
+		as = new AuthService();
+		us = new UserService();
+		
+		String username = null;
+		String password = null;
+		
+		System.out.println("Please enter username:");
+		username = scan.nextLine();
+		System.out.println("Please enter password:");
+		password = scan.nextLine();
 		
 		try {
-			Connection c = DriverManager.getConnection(url, username, password);
-			System.out.println(c.getMetaData().getDriverName());
-			Statement s = c.createStatement();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(as.login(username, password));
+		} catch (LoginException e) {
+			System.out.println("Invalid credentials.");
+//			e.printStackTrace();
 		}
+
+		
+		List<User> users = us.getUsers();
+		for(User u : users) {
+			System.out.println(u);
+		}	
+		// "1; drop table users"
+		System.out.println("Create, username:");
+		String uname = scan.nextLine();
+		System.out.println("Create, password:");
+		String pass = scan.nextLine();
+		User userTBC = new User();
+		userTBC.setUsername(uname);
+		userTBC.setPassword(pass);
+		System.out.println(us.createUser(userTBC));
+		
+		scan.close();
 	}
 
 }

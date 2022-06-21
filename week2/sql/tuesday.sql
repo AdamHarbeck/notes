@@ -30,3 +30,9 @@ select t.id, t.description, t.due_date, t.status, u.id as user_id, u.username
 from tasks t
 join users u
 on t.user_assigned_id = u.id;
+
+
+select * from users where id = 1;
+select * from users;
+select * from users where username  = 'jmoorey3';
+insert into users (username, password) values('kev','pass');
