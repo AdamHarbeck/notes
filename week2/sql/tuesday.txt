@@ -25,3 +25,29 @@ Joins
 
 	- resources:
 		- https://www.postgresql.org/docs/10/tutorial-join.html
+
+JDBC
+	- Java Database Connectivity
+		- establish a connection between a java application and a database
+		- maven dependency imported is vendor specific (postgresql, oracle...)
+	- Important Class/Interfaces
+		- DriverManager (C)
+			- manages the JDBC Driver
+			- retrieve connection to a database
+				- .getConnection()
+					- pass in url, username, password
+						- hardcoded (bad practice)
+						- property file (prevent credential leak by adding a file to .gitignore)
+						- environment variables
+		- Connection (I)
+			- represents the connection to a database
+			- createStatement()/prepareStatement()
+			- close();
+		- Statement (I)
+			- represent a SQL statement
+			- .executeQuery()
+		- PreparedStatement (I)
+		- ResultSet(I)
+			- represents the results of a query
+			- next(), to iterate over the resulte set
+			- retrieve data from it using .getmethods
