@@ -1,0 +1,4 @@
+12:46:46 [main] ERROR com.revature.Driver - Login exception was thrown: com.revature.exceptions.LoginException
+12:48:52 [main] ERROR com.revature.Driver - Login exception was thrown: com.revature.exceptions.LoginException
+12:48:57 [main] INFO  com.revature.services.UserService - User: User [id=16, username=kev5, password=pass5] was created.
+12:48:57 [main] INFO  com.revature.Driver - User [id=16, username=kev5, password=pass5]
