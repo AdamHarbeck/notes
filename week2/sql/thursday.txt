@@ -29,3 +29,37 @@ TCL
 					- Transaction Isolation Levels
 			- Durability
 				- Commits are final, changes are persisted to the database
+
+Scalar and aggregate functions
+	- scalar
+		- used on a single input to retrieve a single input
+		- length, upper, lower, round, substr
+	- aggregate
+		- used on a group of inputs to retrieve a single input
+		- count, avg, max....
+		- GROUP BY clause
+			- used with aggregate functions
+				- select [col_name], count(*) from [table] group by [col_name];
+		- HAVING clause
+			- used with aggregate function to further filter the result set (after aggregation)
+				select user_assigned_id, count(*) 
+				from tasks t 
+				-- where clause has to be before aggregation
+				group by user_assigned_id
+				having count(*) > 1;
+
+
+
+
+slf4j
+	- simple logging facade for Java
+	- provides a series of interfaces to work with different logging implementations
+		- abstraction layer
+			- ie: at dev time, the logging framework used might be different that the one used in production
+				- slf4j will redirect to the underlying implementation
+
+Log4j2
+	- Java logging framework, successor of log4J
+	- Logging
+		- capturing and persisting information regarding the state of an application
+			- making it available for analysis at a later time

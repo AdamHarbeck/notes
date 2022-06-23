@@ -39,3 +39,25 @@ select * from users;
 select * from users where username  = 'jmoorey3';
 insert into users (username, password) values('kev','pass');
 
+-- Scalar
+select username from users;
+select upper(username), password from users;
+select length(username) from users;
+
+-- Aggregate
+select * from users;
+select count(*) from users;
+-- count number of tasks per user
+-- count number of new tasks
+select * from tasks;
+select count(*) from tasks where user_assigned_id = 1;
+select count(*) from tasks where user_assigned_id = 2;
+select user_assigned_id, count(*) from tasks t group by user_assigned_id;
+
+select user_assigned_id, count(*) 
+from tasks t 
+-- where clause has to be before aggregation
+group by user_assigned_id
+having count(*) > 1;
+
+select status, count(status) from tasks group by status;
