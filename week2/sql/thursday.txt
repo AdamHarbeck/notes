@@ -1,0 +1,31 @@
+TCL
+	- Transaction Control Language
+		- transactions
+			- consist in combining multiple database operations into one unit of work
+			- (PostgreSQL treats every SQL statement as their own transaction unless specified otherwise)
+		- Relevant Statements
+			- begin
+				- can indicate the start of a transaction
+					- if not included, one can be provided implicitely
+				- put statement(s) to be executed as one unit of work
+					- between begin and commit	
+			- savepoint
+				- saving the state of the database at a certain point WITHIN the transaction
+			- rollback []
+				- reverts the state of database to a previous commit or savepoinr
+			- commit
+				- saving/persisteing changes to a database at the end of the transaction
+		- https://www.postgresql.org/docs/10/tutorial-transactions.html
+		- Properties of a transaction: ACID
+			- Atomicity
+				- one unit, transaction should be completed as a whole or not at all
+			- Consistency
+				- database should be in a valid state before and after the transaction
+					- in regards to database constraints
+					- in regards to the business logic
+			- Isolation
+				- a transaction should not interfere with another transaction
+				- results of transactions executing concurently should be the same as if they were executed in sequence
+					- Transaction Isolation Levels
+			- Durability
+				- Commits are final, changes are persisted to the database
