@@ -7,7 +7,11 @@ select * from tasks where status = 'new';
 select * from tasks where due_date != current_date;
 select * from tasks where due_date > current_date;
 
-select t.id, t.description, t.due_date, t.status, t.user_assigned_id , u.username from tasks t join users u on t.user_assigned_id = u.id where user_assigned_id = 1;
+select t.id, t.description, t.due_date, t.status, t.user_assigned_id , u.username 
+from tasks t 
+join users u 
+on t.user_assigned_id = u.id 
+where user_assigned_id = 1;
 
 -- statement to retrieve information for login?
 /*
