@@ -78,3 +78,28 @@ CSS
                 - most to least: id > class > tag
     - CSS Box Model
         - margin > border > padding > content
+
+Bootstrap
+    - library of classes that can be leveraged as premade templates
+        - import bootstrap into html page
+        - leverage bootstrap classes in order to style elements
+    - Responsive Web Design
+        - website/webpages that automatically adapt to different screen sizes/types
+        - Bootstrap uses a grid system in the background
+
+S3
+    - Simple Storage Service
+        - Highly scalable Storage 
+        - High durability and availability
+    - Can access programmatically using AWS SDK
+    - Can host static webpages
+    - https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html
+Resources:
+	- https://www.w3schools.com/
+	- https://developer.mozilla.org/en-US/docs/Web/HTML
+	- RevPro
+
+
+Optional VsCode add-on:
+	- Live Server
+		- allows for automatic refresh of HTML page in browser
