@@ -5,8 +5,9 @@ The environment setup guide for week 1 and 2 can be found [here](https://github.
 
 ## Training Calendar
 
-* 06/29
-    * Project 0 Presentations (TBD)
+* 06/30
+    * Project 0 Presentations (10am-1pm)
+        * Code Freeze (10am)
 
 <hr>
 
