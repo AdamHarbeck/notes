@@ -5,6 +5,14 @@ The environment setup guide for week 1 and 2 can be found [here](https://github.
 
 ## Training Calendar
 
+* 07/06
+    * QC Code Challenge - due at 6pm ET (~1hr)
+        * 2 Java Questions
+        * 1 SQL Question
+
+<hr>
+
+
 * 06/30
     * Project 0 Presentations (10am-1pm)
         * Code Freeze (10am)
