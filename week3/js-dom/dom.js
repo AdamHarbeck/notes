@@ -125,7 +125,8 @@ function deselectDiv() {
 /*
     Manipulating the DOM: Creating Elements
 */
-var createTableBtn = document.getElementsByTagName('button')[2];
+// var createTableBtn = document.getElementsByTagName('button')[2];
+var createTableBtn = document.getElementById('createTableButton');
 var tableDiv = document.getElementById('tableDiv');
 
 createTableBtn.onclick = createTable;

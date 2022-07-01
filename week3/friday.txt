@@ -1,0 +1,79 @@
+Javascript Scopes
+    - where a declared variable is accessible
+    - global
+        - variable declared outside of the function scope
+        - accessible anywhere within the script
+    - function
+        - variables declared within a function block
+    - block
+        - variables defined within {} block 
+        - new to ES6
+            - introducing "new" ways to declare variables
+                - let - 
+                - const - cannot be reassigned, cannot redeclare
+"use strict"
+    - defined that the code should be executed in strict mode
+        - cannot use undeclared variables
+
+Template literal
+    - declared between backticks: ``
+    - easier than concatenation: 
+        - instead of: '<strong>' + message +'!</strong>'
+        - use: `<strong> ${message} </strong>`;
+            - where ${message} refers to a variable called message
+
+DOM
+    - Document Object Model
+        - tree like representation of an HTML document using JS objects
+            - each node of the tree represents a nested HTML element
+    - Can traverse/navigate/retrieve elements from the DOM using JS methods
+        - document.getElementById
+        - document.getElementsByClassname -> array of elements of that class name 
+        - document.getElementsByTagName -> array of elements of that tag name
+    - Can programmatically manipulate these elements using their properties
+        - attributes
+        - setAttributes
+        - innerHTML
+    - Can also create and append elements using Javascript
+        - createElement('li') - creates an HTML element
+        - appendElement('') - attach that element to the appropriate location in the DOM
+    
+Event Listeners
+    - listeners that wait for certain events to happen to execute some functionality
+        - onClick
+        - onMouseHover
+        - OnMouseOut
+        - onKeyDown
+    - step 1, retrieve the element
+    - assign functionality
+        - element.onclick = callback Function
+        - element.addEventListener(event, callbackfunction, boolean)
+
+Event Propagation
+    - how event listeners handle events for elements that have a parent/child relationship with event listeners as well
+    - 2 types 
+        - bubbling - default behavior, event bubbles up from the inner most child to the outermost parent
+        - capturing - event starts at the outermost parent and moves down to the inner most child
+    - to specify behavior 
+        -  element.addEventListener(event, callbackfunction, boolean)
+            - boolean is true => capturing
+            - boolean is false/no argument for boolean (default behavior) => bubbling
+    - to stop Propagation
+        - event.stopPropagation();
+
+Fetch API
+    - a JS API that allows us to send HTTP requests and receive HTTP responses
+        - ES6 feature
+    - fetch(url) - GET request 
+    - fetch(url, 
+    {
+        method: 'POST',
+        header: '',
+        body: ''
+    })
+    - Can be used alongside async and await
+        - introduced in ES7
+        - async
+            - used to specify that a function returns a promise or is making an asynchronous call 
+        - await
+            - used in an async function to make an asynchronous call

@@ -58,3 +58,5 @@ JavaScript
             - Self Invoking Functions
                 - Functions invoked immediately after definition
             - callback functions
+                - Function passed in as an argument
+                - helps with asynchronous programming
