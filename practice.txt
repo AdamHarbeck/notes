@@ -1,0 +1,21 @@
+Hackerrank:
+	- https://www.hackerrank.com
+	- Problems:
+		- Java
+			- Simple Array Sum
+			- CamelCase
+			- Library Fine
+			- Staircase
+		- SQL
+			- Weather Observation Station 2
+			- The Report
+	- Solutions from other users are available in the discussion tab
+
+LeetCode
+	- https://leetcode.com/
+	- Problems:
+		- Java
+			- Two Sum
+			- Palindrome Number
+		- SQL
+			- Study Plan: SQL
