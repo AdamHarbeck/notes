@@ -52,3 +52,68 @@ Hibernate
 					- VALIDATE - makes sure that everything is there as expected
 					- NONE - hibernate doesn't do ddl
 					- ... 
+		- Object mapping (using xml/ annotation based)
+			- xml
+				- create xml file: User.hbm.xml
+					<hibernate-mapping>
+						<class name="com.revature.models.User" table="users">
+							<id name="id" column="user_id"><generator class="increment"></id> 
+							<property name="username" column="username"></property>
+						</class>
+					</hibernate-mapping>
+				- link it in the hibernate.cfg.xml
+					- <mapping resource="User.hbm.xml"></mapping>
+			- annotation-based
+				- <mapping class="com.revature.models.User"></mapping>
+				- in the class, use JPA imported annotations to map the class
+					- ie:
+						- @Entity: must go at the top opf the class to be mapped to a table
+						- @Table: allows the table to be named differently than the class name
+	- Lazy Loading vs Eager fetching
+		- when fetched eagerly, the entire object is retrieved as soon as the "parent" is retrieved
+		- when fetched lazily, a proxy is retrieved until that object is used in the session
+			- proxy: dummy/empty object aside from its id
+
+	- DAO/CRUD methods from hibernates
+		- .get() vs .load()
+			- .get()
+				- eagerly fetches information from the database
+				- returns null if not found
+			- .load()
+				- lazily fetches an object
+				- throw an exception if the object is not found
+		- .update() vs merge()
+			- update()
+				- void return
+				- if update an object with no id in the database, throws an exception
+				- if persistent object in same session has the same id, throws an exception
+			- merge()
+				- returns the merged object
+				- if an object in the same session exists with the same id, merge the two
+		- .save() vs persist()
+			- save()
+				- returns object with the id
+			- persist()
+				- void
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
