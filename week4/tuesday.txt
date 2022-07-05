@@ -1,0 +1,54 @@
+ORM
+	- Object-Relational Mapping
+		- converting between incompatible types of objects and database objects
+
+JPA
+	- Java Persistence API
+		- Interfaces meant for mapping/managing relational data with Java Objects
+	- "Concept" rather than a tool
+		- describes which objects should be persisted why/how
+
+Hibernate
+	- ORM framework for Java
+	- using annotations/xml files to sync java classes to db tables
+	- Benefits
+		- Abstraction of JDBC
+			- uses JDBC under the hood
+			- abstracts away SQL queries
+				- abstracts away SQL dialect (ie: PostgreSQL, Oracle...)
+			- reduces boiler plate code
+		- Caching
+			- store query information in the server
+		- Leverages HQL (Hibernate Query Language)
+			- dialect specific to hibernate
+			- can also use native sql if desired (bad practice)
+	- Classes/interfaces in Hibernate
+	- Configuration (C)
+		- allows you to create session factories using a config file/classes
+			- hibernate.cfg.xml
+	- SessionFactory (I)
+		- singleton in charge of creating session objects using a factory design pattern
+	- Session (I)
+		- represents a connection to the database
+	- Transaction (I)
+		- managing ACID compliant transactions
+		- from session object
+			- .beginTransaction()
+				- commit()
+				- rollback()
+	- Query (I)
+		- write complex CRUD operations using HQL
+	- Criteria (I)
+		- using a programatic way to write SQL statements
+	
+	- hibernate.cfg.xml
+		- config file for hibernate
+			- hibernate-configuration - root tag
+			- session-factory
+				- provide db credentials
+				- hbm2ddl.auto
+					- CREATE - drops all existing tables and objects provided by your application and recreates it
+					- UPDATE - doesn't delete anything but adds to the schema if needed
+					- VALIDATE - makes sure that everything is there as expected
+					- NONE - hibernate doesn't do ddl
+					- ... 
