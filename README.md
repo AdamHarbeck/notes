@@ -5,6 +5,14 @@ The environment setup guide for week 1 and 2 can be found [here](https://github.
 
 ## Training Calendar
 
+* 07/15
+    * Project 1 Presentations
+        * Last push at 10am ET
+* 07/12
+    * QC (4pm ET) - on week 3&4 topics
+
+<hr>
+
 * 07/06
     * QC Code Challenge - due at 6pm ET (~1hr)
         * 2 Java Questions
