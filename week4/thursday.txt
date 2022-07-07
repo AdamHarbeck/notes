@@ -1,0 +1,124 @@
+AWS
+	- Amazon Web Services
+		- offer cloud solutions to customer needs
+	- Why Cloud?
+		- cost saving
+			- don't have to manage servers on premise
+				- staff
+				- maintenance/upgrades
+		- Infrastructure for your application
+		- scalability
+			- auto-scaling
+				- pay for what you use
+				- can adapt to short terms needs
+		- durability
+	- Regions and Availability Zones
+		- Region
+			- groupings of AWS zones available world wide
+		- Availability zones
+			- data centers containing infrastructure
+	- Cloud Computing Models
+		- models in which cloud services can be provided
+			- https://imgur.com/0GfoKVd
+		- IaaS
+			- Infrastructure as a Service
+			- providing the "infrastructure" for an application
+				- hardware, networking, ...
+				- user still needs to provide app, data, runtime...
+		- PaaS
+			- Platform as a Service
+			- user needs to provide application/data
+		- SaaS
+			- Software as a Service
+			- everything is abstracted away from the user
+	- Services
+		- S3
+			- Object storage
+			- Static website hosting
+		- RDS
+			- Relational Database Service
+		- EC2
+			- Virtual Machine Managed by AWS
+			- AMI
+			- EBS
+			- Security groups
+
+SSH into EC2
+	- ssh -i path/to/file.pem ec2-user@[public-dns]
+	- Amazon linux 2
+		- yum as package manager
+
+Docker
+	- Tool revolving around the idea of containerization
+		- to develop and deploy applications using containers
+	- Supported on Linux
+		- Docker Toolbox is required for other OS
+	- Follows a client-server architecture
+
+Container
+	- standardized unit of software
+		- abstraction at the app layer that packages the code and dependencies together
+			- multiple containers can run on the same Docker Engine and share the same OS
+				- each container runs as an isolated process
+				- lightweight and scalable
+				- provides a more efficient use of resources
+	- CONTAINERS ARE DIFFERENT FROM VIRTUAL MACHINES
+
+Terminology
+	- Docker Daemon
+		- background service running on the OS that manages building/running Docker containers
+		- interact with it using the Docker Client
+	- Docker Client
+		- Commandline Tool used to interact with the DockerDaemon
+	- Dockerfile
+		- a simple Text file that contains a list of commands to create a docker image
+		- note: does not have a file extension
+	- Docker Image
+		- blueprint of an application to create a container
+		- includes everything needed to run an application: the code, runtime, dependencies...
+	- Docker Container
+		- a running process, isolated from host and each other
+		- each container interacts with its own filesystem provided by a docker image
+	- DockerHub
+	- Docker Volume
+
+Dockerfile
+	- FROM [base-image]
+		- an image to be built upon / usually the runtime environment for an application
+		- specified at the top of the dockerfile
+	- ADD [url]
+		- adding an online file to the image
+	- COPY [Host filesystem] [container file system]
+		- used to copy files into the container's file system
+	- ENV
+		- used to specify environment variables
+	- CMD/RUN
+		- used to run commands like: sudo yum update...
+	- ENTRYPOINT
+		- can be used to specify the entrypoint to an application
+	- EXPOSE specify what port to expose
+
+Docker Workflow
+
+Dockerfile -> docker build -t [name-of-image] . (location of Dockerfile) -> Docker Image
+Docker Image -> docker run -p [port to run on] --name [name of container] -d [image-name] -> Docker Container
+Docker image -> docker push [dockerhub-username]/[image-name] -> available onto dockerhub
+Docker pull 
+	- to retrieve image
+
+Docker commands
+	- docker
+		- lists available commmands
+	- docker ps
+		- list running containers
+	- docker ps -a
+		- list stopped containers
+	- docker images
+		- list available image
+	- docker build
+		- build image from Dockerfile
+	- docker run
+		- runs a container from a docker image
+	- docker stop
+		- stop a container
+	- docker pull/push
