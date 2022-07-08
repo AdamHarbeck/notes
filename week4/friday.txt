@@ -32,4 +32,29 @@ DevOps Pipeline
 			- at the end have a simple action to deploy the app
 		- deployment
 			- testing, code quality analysis, packaging, deploying the app
+
+Jenkins
+	- open-sourced automation server/build automation tool
+		- allows us to automate the CD process
+	- in general, leverages plugins to add functionality
+		- git, maven, gradle, docker, kubernetes, aws cli
+	- Jenkins Job
+		- project managed by Jenkins
+			- set of repeatable steps to be automated by Jenkins
+				- ie: pulling code from GitHub, packaging, creating docker image...
+			- build trigger
+				- defines when the job should be ran/executed
+					- manually
+					- set up a webhook
+						- allows jenkins to be notified when a branch has been updated
+			- build status
+				- green - success
+				- yellow - unstable
+				- red - failure
+			- weather forecast
+				- how often the build has failed lately
+	- Jenkinsfile
+		- text file that contains the definition of a Jenkins pipeline
+			- add to a git repository
+
 	
