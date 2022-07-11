@@ -38,6 +38,46 @@ Node Package Manager (npm)
 	- package-lock.json
 		- specifies the exact version of the dependencies and required subdependencies so that the project is 100% reproducible
 
+TypeScript (TS)
+	- made by Microsoft
+		- getting started
+			- https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-oop.html
+			- https://www.typescriptlang.org/docs/handbook/intro.html
+	- superset of JS
+		- all JavaScript is valid TypeScript
+			- anything that can be done in JS can be done in TS
+	- features
+		- static typing
+		- compile/transpile time check
+		- interfaces
+		- access modifiers
+	- more OOP than JS
+	- Cannot be ran in a browser
+		- needs to be transpiled into JS
+	- installing Typescript
+		- npm -g install typescript
+			- -g flag indicates a global installation rather than project specific
+	- tsc
+		- command that can be used to transpile .ts files to js
+		- by default it uses a JS version < ES5
+			- use --target flag to specify a js version
+			- tsc --target es6 [file].ts
+	- types
+		- all of the JS types
+		- TS specific
+			- any
+			- void
+			- never
+			- enums
+			- tuples
+		- https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
+	- access modifiers
+		- public
+		- private
+		- protected
+	- non-access modifiers
+		- read-only
+	- interfaces
 
-
-
+Installing Angular 12
+	- npm i -g @angular/cli@12.2.17
