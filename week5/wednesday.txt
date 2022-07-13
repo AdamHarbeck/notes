@@ -1,0 +1,52 @@
+Directives
+    - classes that add behaviors to elements in Angular application
+        - Angular has built-in directives to be leveraged
+    - Component
+        - using the selector, can be an html tag that refers to a component
+        - <app-nav></app-nav>
+    - Structural
+        - directives used to interact with the DOM
+            - creating elements, displaying elements
+        - *ngIf, *ngFor
+    - Attribute
+        - directives used to change the looks/behaviors of DOM elements/ components
+                - can generate custom directives
+                    - @Directive
+        - ngStyle, ngClass, ngModel
+
+Databinding
+    - way to communication between the HTML/DOM and the application state (TS)
+        - way to keep the view up to date based on ts logic
+    - One-way Databinding
+        - String interpolation
+            - display data to the view
+            - from ts file -> html document
+            - someVar:string = 'Kev' -> {{someVar}}
+        - EventBinding
+            - assigning functionality to an event
+            - from html -> ts 
+            - define a function in ts: doSomething(){...}
+            - <someTag (event) = "doSomething()"> </...>
+        - Attribute/property binding 
+            - assigning a value to an Attribute/property of a html element
+            - from ts -> html
+    - Two-way Databinding
+        - both ways from html to ts, and ts to html
+        - import FormsModule
+        - ts: someVar: string = 'kev';
+        - html: <input [(ngModel)]="someVar";
+
+Pipe
+    - used to transform/display data in the view
+        - don't actually change the data itself, only the way it's displayed
+    - ie: uppercase/lowercase
+        - date formatting
+        - currency
+    - used in conjunction with String interpolation
+        - {{value | pipeName}}
+    - custom pipes
+        - ng g pipe [pipeName]
+        - @Pipe - decorator
+            - name property, refers to the name of the pipe
+        - implements transform()
+            - specifies behavior for the pipe

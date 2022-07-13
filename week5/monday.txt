@@ -79,5 +79,5 @@ TypeScript (TS)
 		- read-only
 	- interfaces
 
-Installing Angular 12
+Installing Angular 10
 	- npm i -g @angular/cli@10.2.4
