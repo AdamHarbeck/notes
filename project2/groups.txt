@@ -2,27 +2,25 @@ Group 1
     - Kevin
     - Adam
     - Calvin
+    - Mike
 
 Group 2
     - Trey
     - Ashley
     - Gianmarco
+    - Angel
+    - Bryan
 
 Group 3
     - Shouchuang
     - Erik
     - Daniel
+    - Ariel
+    - Zaki
 
 Group 4
     - Glenn
     - Lane
     - Dylan
-
-
-P1 presentations
-    - Mike
-    - Zaki
     - Charles
     - Derek
-    - Angel
-    - Ariel
