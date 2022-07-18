@@ -1,0 +1,116 @@
+Spring
+	- is a framework that leverages Inversion of Control (IoC) and Dependency Injection (DI) in order to accelerate software development
+		- in general, "Spring" refers to the Spring framework
+	- Spring Modules
+		- different 'features' within the Spring Framework
+			- Usually addresses a specific concern within an application
+				- https://docs.spring.io/spring-framework/docs/4.0.x/spring-framework-reference/html/images/spring-overview.png
+				- SpringCore (IoC Container)
+				- SpringBeans
+				- SpringContext
+				- SpringWebMVC
+				- SpringAOP
+				- SpringORM
+	- Spring Projects
+		- address industry concerns (ie: security, MicroService Architecture, Fast Development)
+			- SpringSecurity
+			- SpringCloud
+			- SpringBoot
+			- SpringData
+	- IoC Container
+		- Spring Container
+		- responsible for instantiating dependencies and providing them to our code
+	- Spring Bean
+		- Any Java Entity managed by the IoC Container
+		- Their dependencies are also managed by Spring
+		- vs Java Bean
+			- private fields
+			- setters/getters
+			- no-args constructor
+			- overriden hashcode() and equals()
+			- implement Serializable
+	- Dependency Injection (DP) 
+		- "dependency"
+			- refers to an object/entity needed for our code/ a class to work properly
+		- "injection"
+			- framework provides the instances of the object for us
+
+IoC Container
+	- "inversion of control" - Spring manages the lifecycle of Spring Beans
+	- once the beans and dependencies have been specified, the IoC container manages/resolves them
+		- creates the bean (we don't have to use the 'new' keyword)
+		- handles dependency injection (if an object requires another Spring beean, the IoC container will inject it for us)
+	- represented by the BeanFactory(BF) and the ApplicationContext(AC)
+		- leverages the factory design pattern to create beans
+		- BF is the older version of the IoC container
+			- lazy instantiation
+		- AC is the newer version of the IoC container
+			- eager instantiation
+			- has all of the functionality of the BF and more
+	- Some important AC implementations
+		- ClassPathXmlApplicationContext
+		- AnnotationConfigApplicationContext
+		- WebApplicationContext
+	- Bean Life Cycle
+		- the lifecycle of a bean managed by the IoC
+			- steps for initialization/destruction of a bean
+		- https://howtodoinjava.com/spring-core/spring-bean-life-cycle/
+
+Beans Definition
+	- root tag of the xml file is "beans"
+	- beans are mapped using the "bean" tag
+		- example:
+			- 	<bean name="ud" class="com.revature.daos.UserHibernate"></bean>
+	- add a static value to a bean
+		- 		<property name="description" value="myVal"></property>
+	- map to other beans
+		- 		<property name="ud" ref="ud"></property>
+
+Scopes of a bean
+	- Singleton: Only one of this bean is created, all requests for this bean get the same one
+	- Prototype: Everytime this bean is requested , all requests get a new one
+	- Web-based scopes:
+		- Request: new bean created per HTTP request
+		- Session: new bean created per HTTP session
+		- Global: new bean created per Global HTTP session
+
+Bean Wiring
+	- refers to establishing dependencies between Spring beans
+	- either XML or annotation based
+		- @Autowired
+			- used to tell Spring that an object is a dependency
+			- Dependency Injection
+				- Constructor Injection - best practice
+				- Field/Property Injection
+				- Setter Injection
+				- Interface injection
+					- NOT SUPPORTED BY SPRING
+	- byName/byType
+	- Automagically
+		- letting Spring Figure it out
+
+Stereotype Annotations
+	- refers to annotations used for beans that the IoC should manage
+		- 4 main types
+			- @Component: standard, managed bean. Other annotations include this annotation implicitely
+			- @Service: denotes a service
+			- @Controller: denotes a controller, using SpringWeb will indicate that this class handles http req/res
+			- @Repository: denotes a repository/dao, bean used to retrieve data from the db, can be used with Spring Data
+
+@Bean
+	- Annotation that goes over a METHOD to specify that the returned Object will be managed by Spring
+		- good for object that have a class that we didn't write
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
