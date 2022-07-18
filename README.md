@@ -5,6 +5,28 @@ The environment setup guide for week 1 and 2 can be found [here](https://github.
 
 ## Training Calendar
 
+* 08/01
+    * Project 2 presentations
+
+<hr>
+
+* 07/20
+    * Sprint Review
+		* Every group gets 7-8 minutes to talk about what they've achieved so far
+			* note: don't forget to explain the purpose of your project
+				* for example:
+					* introduce project
+						* show off api used
+					* ERD
+						* talk about multiplicity/normalization
+					* Product backlog + story points
+					* git flow
+				    * front end skeleton
+					* anything you feel proud about
+			* opportunity for other groups to ask questions or propose considerations
+
+<hr>
+
 * 07/15
     * Project 1 Presentations
         * Last push at 10am ET
