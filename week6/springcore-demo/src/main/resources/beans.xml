@@ -10,7 +10,7 @@
 
 <!-- 	<bean name="ud" class="com.revature.daos.UserHibernate"></bean>
 	
-	<bean name="employee-service" class="com.revature.services.UserService">
+	<bean name="user-service" class="com.revature.services.UserService">
 		<property name="description" value="myVal"></property>
 		<property name="ud" ref="ud"></property>
 	</bean> -->
