@@ -1,0 +1,73 @@
+Spring Web MVC
+	- Spring Module
+		- Spring Web
+	- allows us to handle HTTP requests for Spring applications
+	- abstract away
+		- leverages a FrontController design pattern
+			- DispatcherServlet
+		- only need to provide implementation of controller methods and the mappins
+			- a lot of the xml config is handled for you
+
+	- Controllers
+		- have methods used to handle requests for a specifc path/http method
+		- can return
+			- data (ie: json)
+			- views/static resources
+	- Flow of a request
+		- client makes a request
+		- request is received by Tomcat
+			- convert the HTTP request into an HttpServletRequest object and generate an HttpServletResponse
+		- check context path (which .war to map the req to)
+		- check the web.xml
+			- where servlets are mapped to endpoints
+				- only have the DispatcherServlet (FC)
+					- /*
+						-ie: mapped to /users, /tasks...
+		- routes the request to DispatcherServlet
+		- check the HandlerMapper
+			- contains information about the different controllers
+				- ie: the path they handle and methods
+		- send the request to the relevant controller to be handled
+	- traditionally, have to configure the DispatcherServlet, ViewResolver as beans to be managed by AC
+		- also have to map the web.xml
+		- SpringBoot abstracts all of that away from us using conventions
+MVC Annotations
+	- @Controller
+		- stereotype annotation used to denote a Controller to be managed by the AC
+		- Can be leveraged alongside @RequestMapping to specify a common path for all controller methods
+		- used to handle HTTP requests
+	- @RequestMapping(HttpMethod, Mapping)
+		- used to specify which HTTP verbs and/or url mapping should be assigned to a method to handle
+		- by default, methods return go through the ViewResolver to return a View
+			- @ResponseBody
+				- allows use to write to the response body
+	- @GetMapping/@PostMapping...
+		- specify the HTTP verb for a method instead of using @RequestMapping
+			- path-params (/users/{id})
+				- @PathVariable: used to retrieve a variable from the path
+			- query-params (/users?role=[value])
+				- @RequestParams: retrieve query params
+			- request body
+				- @RequestBody
+					- used to map a JSON object to a Java Object implicitely to be used in the method
+	- @RestController
+		- just @Controller
+		- implicitely addes @ResponseBody to all methods to bypass ViewResolver
+			
+	
+ResponseEntity
+	- Class to provide more granular control over an Http Response
+		- ie: specify a status code
+
+GlobalException Handling
+	- Allows us to handle all exception occuring server side and returning relevant status codes within a single class
+	- @ControllerAdvice on top of class
+	- @ExceptionHandler([exceptionName.class]) on top of method
+	- @ResponseStatus to specify the status
+
+Rest Template
+	- Spring's traditional way to make HTTP calls from your application
+		- WebClient - more recent
+	- why make HTTP call from backend
+		- some APIs require API keys
+			- making requests from frontend might expose the key to the user
