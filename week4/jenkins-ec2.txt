@@ -78,9 +78,12 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 --> Apply and Save
 
 --> FOR SENSITIVE INFORMATION
-	- Add secret text in Jenkins under credentials
-	- GLOBAL variables
-		- ie: DB credentials
+	- From the Jenkins Dashboard, select Manage Jenkins
+		- Navigate to Manage Credentials
+			- Under Store, click on Jenkins
+				- Select Global credentials (unrestricted)
+					- Click on Add Credentials
+						- Select secret text, put the ID as the key and Secret as the value of the environment variable to be injected during the pipeline
 	
 Save, run the build, then view the console output notice maven package success.
 

@@ -10,6 +10,11 @@ The environment setup guide for week 1 and 2 can be found [here](https://github.
 
 <hr>
 
+* 07/26
+    * QC (4pm ET) - on week 5&6 topics
+
+<hr>
+
 * 07/20
     * Sprint Review
 		* Every group gets 7-8 minutes to talk about what they've achieved so far

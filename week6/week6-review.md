@@ -29,7 +29,7 @@
 10.	How do you handle exceptions thrown in your code from your controller? What happens if you don’t set up any exception handling?
 11.	How would you consume an external web service using Spring?
 12.	What are the advantages of using RestTemplate?
-13. What is the different between @Controller and @RestController
+13. What is the difference between @Controller and @RestController
 
 ## Spring AOP
 1.	What is “aspect-oriented programming”? Define an aspect.
@@ -46,7 +46,7 @@
 1.	What is Spring ORM and Spring Data?
 2.	What does @Transactional do? 
 3.	What interfaces are available in Spring Data JPA?
-4.	What is the difference between JPARepository and CrudRepository?
+4.	What is the difference between JpaRepository and CrudRepository?
 5.	What is the naming conventions for methods in Spring Data repositories?
 6.	How are Spring repositories implemented by Spring at runtime?
 7.	What is @Query used for?
