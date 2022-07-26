@@ -1,0 +1,33 @@
+API Gateway/ Gateway Service
+	- acts as a "gateway" to route and filter all incoming requests
+		- b/c all requests go through the gateway, an ideal location to apply filters
+	- routing
+		- sending requests to the appropriate service
+			- localhost:8080/tasks -> send to the task-service
+			- localhost:8080/users -> send to the user-service
+		- set up in application.yml
+	- implementations
+		- Spring Cloud Gateway - Abstraction of Zuul
+		- Zuul - from Netflix Stack
+
+Service Discovery
+	- services communicate with one another constantly
+		- one challenge is to keep track of these services as they are instantiated and taken down
+	- Service Discovery allows for the service to locate one another using the service registry
+		- list of all available services and their location
+		- keep track of whether or not the service registered are up and running
+			- leverages a heartbeat (sends ping and expects ping back)
+		- services within the MSA register to this registry
+	- implementations
+		- Eureka - from the Netflix Stack
+		- Consul
+			- provides secure service to service communication for us
+			- services can register to consul via the @EnableDiscoveryClient annotation 
+				- once dependency is added, implicit
+			- docker run -d --name consul -p 8500:8500 consul
+
+LoadBalancing
+	- splitting requests between available instances of the service
+		- Client-side load balancer (Ribbon)
+			- in this case, client-side means the service making the request
+		- Server-side load balancer (API gateway)
