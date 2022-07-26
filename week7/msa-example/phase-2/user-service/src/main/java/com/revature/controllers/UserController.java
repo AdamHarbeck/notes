@@ -19,7 +19,7 @@ import com.revature.repositories.RoleRepository;
 import com.revature.repositories.UserRepository;
 
 @RestController
-@RequestMapping("/users")
+//@RequestMapping("/users")
 public class UserController {
 
 	private UserRepository ur;
@@ -71,7 +71,8 @@ public class UserController {
 	
 	@GetMapping("/tasks")
 	public ResponseEntity<List<Task>> findTasks(){
-		List<Task> tasks = this.rt.getForObject("http://localhost:8081/tasks", List.class);
+//		List<Task> tasks = this.rt.getForObject("http://localhost:8080/tasks", List.class);
+		List<Task> tasks = this.rt.getForObject("http://tasks", List.class);
 		
 		if(tasks.isEmpty()) {
 			return ResponseEntity.noContent().build();

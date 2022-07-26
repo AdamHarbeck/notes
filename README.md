@@ -5,10 +5,21 @@ The environment setup guide for week 1 and 2 can be found [here](https://github.
 
 ## Training Calendar
 
+* 08/18
+    * Project 3 Showcase (3pm ET)
+
+<hr>
+
 * 08/01
     * Project 2 presentations
 
 <hr>
+
+* 07/28
+    * Java Showcase (11:30 ET)
+
+* 07/27
+    * Shelby (2pm ET)
 
 * 07/26
     * QC (4pm ET) - on week 5&6 topics
