@@ -3,6 +3,7 @@ package com.revature.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,22 +12,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.revature.clients.TaskClient;
 import com.revature.models.Role;
 import com.revature.models.Task;
 import com.revature.models.User;
-import com.revature.repositories.RoleRepository;
 import com.revature.repositories.UserRepository;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
 @RestController
 public class UserController {
 
 	private UserRepository ur;
 	private RestTemplate rt;
+	private TaskClient tc;
 
 	@Autowired
-	public UserController(UserRepository ur, RestTemplate rt) {
+	public UserController(UserRepository ur, RestTemplate rt, TaskClient tc) {
 		this.ur = ur;
 		this.rt = rt;
+		this.tc = tc;
 	}
 
 	@GetMapping
@@ -91,9 +96,17 @@ public class UserController {
 		return ResponseEntity.ok(users);
 	}
 
+	@CircuitBreaker(name="tc", fallbackMethod ="fallbackExample")
 	@GetMapping("/tasks/port")
 	public ResponseEntity<String> getPort(){
-		String port = this.rt.getForObject("http://tasks/port", String.class);
+//		String port = this.rt.getForObject("http://tasks/port", String.class);
+		String port = this.tc.getPort();
+		
 		return ResponseEntity.ok(port);
+	}
+	
+	public ResponseEntity<String> fallbackExample(Exception e){
+//		return ResponseEntity.ok("This is the fallback method... ie: default behavior if service not working");
+		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("Task service is currently unavailable.");
 	}
 }
