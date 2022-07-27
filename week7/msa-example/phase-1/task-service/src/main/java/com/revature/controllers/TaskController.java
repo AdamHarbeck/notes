@@ -8,19 +8,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.revature.models.Task;
+import com.revature.models.User;
 import com.revature.repositories.TaskRepository;
 
-@RestController()
+@RestController
 @RequestMapping("/tasks")
 public class TaskController {
 
 	private TaskRepository tr;
+	private RestTemplate rt;
 	
 	@Autowired
-	public TaskController(TaskRepository tr) {
+	public TaskController(TaskRepository tr, RestTemplate rt) {
 		this.tr = tr;
+		this.rt = rt;
 	}
 	
 	@GetMapping
@@ -43,5 +47,31 @@ public class TaskController {
 		}
 		
 		return ResponseEntity.ok(task);
+	}
+	
+	@GetMapping("/{id}/users")
+	public ResponseEntity<List<User>> findUsersById(@PathVariable("id") int id){
+		
+		Task task = tr.findById(id).orElse(null);
+		
+		if(task == null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		List<User> users = this.rt.getForObject("http://localhost:8090/users/tasks/" + id, List.class);
+		
+		if(users.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		return ResponseEntity.ok(users);
+	}
+	
+	@GetMapping("/users/{id}")
+	public ResponseEntity<List<Task>> findByUserId(@PathVariable("id") int id){
+		
+		List<Task> tasks = tr.findAllByUsers_Id(id);
+		
+		return ResponseEntity.ok(tasks);
 	}
 }
