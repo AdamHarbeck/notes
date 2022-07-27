@@ -4,28 +4,31 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
+import com.revature.clients.UserClient;
+import com.revature.dtos.UserDTO;
 import com.revature.models.Task;
-import com.revature.models.User;
 import com.revature.repositories.TaskRepository;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
 @RestController()
 public class TaskController {
 
 	private TaskRepository tr;
-	private RestTemplate rt;
 	private Environment env;
+	private UserClient uc;
 	
 	@Autowired
-	public TaskController(TaskRepository tr, RestTemplate rt, Environment env) {
+	public TaskController(TaskRepository tr, Environment env, UserClient uc) {
 		this.tr = tr;
-		this.rt = rt;
 		this.env = env;
+		this.uc = uc;
 	}
 	
 	@GetMapping
@@ -50,8 +53,9 @@ public class TaskController {
 		return ResponseEntity.ok(task);
 	}
 	
+	@CircuitBreaker(name="uc", fallbackMethod ="fallbackExample")
 	@GetMapping("/{id}/users")
-	public ResponseEntity<List<User>> findUsersById(@PathVariable("id") int id){
+	public ResponseEntity<List<UserDTO>> findUsersById(@PathVariable("id") int id){
 		
 		Task task = tr.findById(id).orElse(null);
 		
@@ -59,7 +63,7 @@ public class TaskController {
 			return ResponseEntity.notFound().build();
 		}
 		
-		List<User> users = this.rt.getForObject("http://users/tasks/" + id, List.class);
+		List<UserDTO> users = this.uc.findUsersByTaskId(id);
 		
 		if(users.isEmpty()) {
 			return ResponseEntity.notFound().build();
@@ -82,4 +86,9 @@ public class TaskController {
 		
 		return "Task service running on port: " + port;
 	}
+	
+	public ResponseEntity<String> fallbackExample(Exception e){
+		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("User service is currently unavailable.");
+	}
+	
 }

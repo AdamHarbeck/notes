@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import com.revature.clients.TaskClient;
+import com.revature.dtos.TaskDTO;
 import com.revature.models.Role;
-import com.revature.models.Task;
 import com.revature.models.User;
 import com.revature.repositories.UserRepository;
 
@@ -24,13 +23,11 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 public class UserController {
 
 	private UserRepository ur;
-	private RestTemplate rt;
 	private TaskClient tc;
 
 	@Autowired
-	public UserController(UserRepository ur, RestTemplate rt, TaskClient tc) {
+	public UserController(UserRepository ur, TaskClient tc) {
 		this.ur = ur;
-		this.rt = rt;
 		this.tc = tc;
 	}
 
@@ -55,9 +52,10 @@ public class UserController {
 
 		return ResponseEntity.ok(user);
 	}
-
+	
+	@CircuitBreaker(name="tc", fallbackMethod ="fallbackExample")
 	@GetMapping("/{id}/tasks")
-	public ResponseEntity<List<Task>> findTasksByUserId(@PathVariable("id") Integer id) {
+	public ResponseEntity<List<TaskDTO>> findTasksByUserId(@PathVariable("id") Integer id) {
 		
 		User user = ur.findById(id).orElse(null);
 
@@ -65,7 +63,7 @@ public class UserController {
 			return ResponseEntity.notFound().build();
 		}
 
-		List<Task> tasks = this.rt.getForObject("http://tasks/users/" + id, List.class);
+		List<TaskDTO> tasks = this.tc.getTaskByUserId(id);
 
 		if(tasks.isEmpty()) {
 			return ResponseEntity.notFound().build();
@@ -99,14 +97,13 @@ public class UserController {
 	@CircuitBreaker(name="tc", fallbackMethod ="fallbackExample")
 	@GetMapping("/tasks/port")
 	public ResponseEntity<String> getPort(){
-//		String port = this.rt.getForObject("http://tasks/port", String.class);
 		String port = this.tc.getPort();
 		
 		return ResponseEntity.ok(port);
 	}
 	
 	public ResponseEntity<String> fallbackExample(Exception e){
-//		return ResponseEntity.ok("This is the fallback method... ie: default behavior if service not working");
 		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("Task service is currently unavailable.");
 	}
+	
 }
