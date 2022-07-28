@@ -1,0 +1,11 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          default-label: main
+          uri: https://github.com/061322-VA-JavaMSA/config
