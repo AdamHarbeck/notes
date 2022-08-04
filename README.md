@@ -10,6 +10,11 @@ The environment setup guide for week 1 and 2 can be found [here](https://github.
 
 <hr>
 
+* 08/10
+    * QC (11am ET) - Cumulative
+
+<hr>
+
 * 08/01
     * Project 2 presentations
 
