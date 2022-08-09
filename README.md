@@ -10,8 +10,12 @@ The environment setup guide for week 1 and 2 can be found [here](https://github.
 
 <hr>
 
-* 08/10
+* 08/11
     * QC (11am ET) - Cumulative
+* 08/10
+    * CoE Check-in with Andrew (10am ET)
+* 08/09
+    * Staging Orientation (12pm ET) - Link to be shared
 
 <hr>
 
