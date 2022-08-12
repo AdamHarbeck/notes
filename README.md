@@ -7,6 +7,8 @@ The environment setup guide for week 1 and 2 can be found [here](https://github.
 
 * 08/18
     * Project 3 Showcase (3pm ET)
+* 08/17
+    * Meet and greet (2-3pm)
 
 <hr>
 
