@@ -1,0 +1,60 @@
+DevOps
+	- In traditional models, the development and operation teams have separate responsibilities and goals
+		- can cause frictions between the teams
+			- dev: want more features/rapid changes, high velocity
+			- ops: prefers static production environment, reducing changes made to reduce chances of introducing bugs/ dropping the availability of the application
+	- set of practices that combines software development with IT operations
+		- goal is to create "high quality code" more efficiently
+
+DevOps practices
+	- Continuous Integration (CI)
+		- practice of consistently merging source code, often in a centralized location/repository
+			- to make sure that people are always working on the latest codebase
+			- prevents large errors from accumulating
+	- Continuous Delivery (CD)
+		- Automating the process of preparing for deployment
+			- each commit/pushes/merges will be tested and prepared for deployment
+			- idea of having the application in a constant state of being ready for deployment
+				- "ready at the push of a button"
+				- require final human intervenbtion
+	- Continuous Deployment (CD)
+		- once code is integrated and passes every stages of the continuous delivery pipeline, releases/deploys the application
+			- without the metaphorical button
+			- does not need human intervention
+		- can lead to issues being introduced in the production environment
+
+DevOps Pipeline
+	- set of automated processes and tools that allow developers and operators to collaborate in deploying code
+		- build, testing, deploying
+	- series of steps to achieve continuous delivery/deployment
+		- delivery
+			- testing, code quality analysis, packaging...
+			- at the end have a simple action to deploy the app
+		- deployment
+			- testing, code quality analysis, packaging, deploying the app
+
+Jenkins
+	- open-sourced automation server/build automation tool
+		- allows us to automate the CD process
+	- in general, leverages plugins to add functionality
+		- git, maven, gradle, docker, kubernetes, aws cli
+	- Jenkins Job
+		- project managed by Jenkins
+			- set of repeatable steps to be automated by Jenkins
+				- ie: pulling code from GitHub, packaging, creating docker image...
+			- build trigger
+				- defines when the job should be ran/executed
+					- manually
+					- set up a webhook
+						- allows jenkins to be notified when a branch has been updated
+			- build status
+				- green - success
+				- yellow - unstable
+				- red - failure
+			- weather forecast
+				- how often the build has failed lately
+	- Jenkinsfile
+		- text file that contains the definition of a Jenkins pipeline
+			- add to a git repository
+
+	

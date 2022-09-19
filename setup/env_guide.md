@@ -150,7 +150,7 @@ Verify that the program was installed properly by searching for "Postman" in you
 
 In order to install PostgreSQL, run the following command in your terminal:
 
-    scoop install postgresql@10.21
+    scoop install postgresql10
 
 PostgreSQL should now be successfully installed on your computer.
 

@@ -1,0 +1,38 @@
+h2 console
+	- allows to navigate the state of an H2 database
+	- enable h2 console in application.yml
+	- localhost:[port]/h2-console
+
+Spring Boot Actuator
+	- information about the application using certain endpoints
+		- traffic
+		- health
+		- ...
+	- Useful for monitoring the state of an application in prod using metric tools
+
+Validating incoming requests
+	- bean validation
+		- allows for the validation of data received by our controllers
+			- can annotate bean properties with constraints
+				- @Length
+				- @Min/Max
+				- @Positive/@Negative
+				- @Pattern(regexp="")
+	- use in conjunction with @Valid to annotate the request body to be validated
+
+Lombok
+	- Code generation tool
+		- annotate your class to generate code
+			- @Setter
+			- @Getter
+			...
+			- @Data
+				- includes setter/getter/no-args constructor/tostring/hashcode/equal
+	- Setting up Lombok with your IDE
+		- navigate to ~/.m2/repository/org/projectlombok/lombok/[lombok-version]
+		- run java -jar lombok-[version].jar
+		- using the installer, navigate to the location of your IDE on your device
+			- ie: if using scoop, will be in the scoop folder
+		- click install/update
+		- CLOSE AND RESTART your IDE
+		- if still no work, maven update

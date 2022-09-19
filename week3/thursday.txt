@@ -1,0 +1,62 @@
+JavaScript
+    - a scripting language that can be used for client-side web applications
+        - can be used server side
+    - interpreted language
+        - not compiled, no compilation step, interpreted by the browser
+            - JIT (Just in Time compiler)
+                - some modern browsers leverage it
+    - supported by all modern browsers
+    - ECMA, manages the standard specification of JavaScript
+        - ES6, ES7
+    - multi-paradigmed
+        - mainly a functional programming language
+    - dynamically/loosely/weakly typed language
+        - variables do not have to be declared with a specific typed
+    - including JavaScript 
+        - via an HTML page 
+            - internally via <script>console.log('Hello world!') </script>
+            - externally, best practice, <script src="path/to/file"></script>
+    - semi-colon injection
+        - JS puts a semi-colon where it feels like it's appropriate implicitely
+            - this can lead to issues
+    - Datatypes in JS
+        - "primitives"
+            - boolean
+            - number
+            - null
+            - undefined
+            - symbol -- don't worry about it
+            - string
+        - "objects"
+            - objects  
+                - stored as key-value pairs
+                - JSON like
+            - arrays
+                - unlike Java, arrays are dynamically sized and can contain multiple Datatypes
+                    - QC usually likes to ask about array methods
+                        - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+        - Truthy/falsy
+            - any type in JS will evaluate to either true or false
+                - falsy values
+                    - null
+                    - undefined
+                    - 0
+                    - ''
+                    - false (the boolean)
+                    - NaN (not a number)
+    - Functions
+        - defined using the function keyword
+            - function funcName(param1, param2){}
+                - if return a value, use return keyword
+        - additional types of Functions
+            - function expresion/anonymous function
+                - function declared without an explicit name, assigned to a variable instead
+                    - var myFunc = function (x,y){return ...;}
+            - Arrow function/notation
+                - short hand syntax for writing functions
+                    - var myFunc = param1, param2 => {logic};
+            - Self Invoking Functions
+                - Functions invoked immediately after definition
+            - callback functions
+                - Function passed in as an argument
+                - helps with asynchronous programming

@@ -1,0 +1,141 @@
+API endpoints:
+	- naming:
+		- https://restfulapi.net/resource-naming/
+	- Resources:
+		- /tasks
+		- UserServlet 
+			- /users
+				- GET
+					- retrieve all users
+						- HTTP Request
+							- Headers
+								- could have headers
+							- Body
+								- empty
+							- URL
+								- /users
+							- METHOD
+								- GET
+						- HTTP Response
+							- Headers
+								- could have headers
+							- Body
+								- users objects
+									- JSON/XML Content type
+							- Status Code
+								- 200 level - success
+				- POST
+					- create a user
+							- Headers
+								- could have headers
+							- Body
+								- New User Data (username, password)
+									- Content-type - JSON
+							- URL
+								- /users
+							- METHOD
+								- POST
+						- HTTP Response
+							- Headers
+								- could have headers
+							- Body
+								- could be empty
+							- Status Code
+								- if successful
+									- 201 level - created
+								- if unsuccessful (ie: user sends empty body, or username already in use)
+									- 400 level - client error
+										- UserNotCreatedException from Service Layer
+			- /users/{id}
+				- GET
+					- retrieve user of a specific id
+						- HTTP Request
+							- Headers
+								- could have headers
+							- Body
+								- empty
+							- URL
+								- /users/{id}
+							- METHOD
+								- GET
+						- HTTP Response
+							- Headers
+								- could have headers
+							- Body
+								- if user found
+									- user object
+										- JSON/XML Content type
+								- if user not found
+									- empty body
+							- Status Code
+								- if user found
+									- 200 level - success
+								- if user not found
+									- 404 - resource not found
+				- PUT
+					- Update a specific user based on id
+				- DELETE
+					- Delete a specific user based on id
+			- /users/{id}/tasks
+
+JSON
+	- JavaScript Object Notation
+		- often the prefered content-type for information transfer
+		- {
+			"key":"value",
+			"key2":value2"
+		  }
+
+Object mappers
+	- Allows for the easy conversion of Java Objects to JSON and back
+	- Jackson Library
+
+
+Data Transfer Objects
+	- representation of the resource (ie: model (ie: users)) without sensitive information for data transfer
+
+Query Params/Path Params
+	- Path param
+		- /users/{id}
+		- id is a value passed into the path
+	- Query params
+		- /users?role=BASIC_USER&location=VA
+		- used to filter by a/multiple value(s)
+
+Session management
+	- tracking user state
+		- persisting information past the lifecycle of an HttpServletRequest
+	- Save the information in the browser
+		- URL rewriting/appending
+			- adding user info to a url
+			- bad practice
+		- Hidden form field
+			- bad practice
+		- HTTP Session
+			- an object that can be retrieved from the HTTPServletRequest
+				- .setAttribute(key,value);
+				- .getAttribute(key,value);
+				- .invalidate();
+			- .getSession();
+				- return a current session or return a new one
+		- Token
+			- JWT - JSON Web Tokens
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		

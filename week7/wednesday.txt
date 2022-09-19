@@ -1,0 +1,19 @@
+Feign Client
+	- Declarative web client, makes it easier to make requests between services
+		- similarly to SpringDataJpa, Feign client generates/implements declared methods for us
+	- set up
+		- import openfeign dependency into service making the request
+		- @EnableFeignClients (on top of class with main method)
+		- create an interface with @FeignClient(name="[service-name]")
+		- list the methods with relevant mappings
+
+Circuit Breaking
+	- Providing methods for failing gracefully in case a service is unavailable
+	- Circuit Breaker design pattern
+		- Closed - works as intended
+		- Open - service is unavailable, use a fallback
+		- Half-closed - testing requests to see if a service is up
+	- set up
+		- import resilience4j dependency into the service making the request
+		- define a fallback method/behavior
+		- @CircuitBreaker annotation on top of the method making a request to another service

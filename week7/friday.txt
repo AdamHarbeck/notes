@@ -1,0 +1,33 @@
+Kafka
+	- Messaging/Messaging Queue
+	- Design patterns
+		- Publisher/ Subscriber model
+		- Producer/ Consumer
+	- for eventual consistency, if a record is created, can make sure that all relevant services also create that record
+	- if a service is unavailable, messages sent to that service can be preserved in the queue to consumed once the service is back up
+	- Broker
+		- log of messaging
+		- maintain topics
+			- subset of data
+				- record
+					- data added to the queue to be consumed
+					- written in topics, ordered with an id/key
+	- not a 1-to-1 relationship
+		- can have multiple producers/consumers for the same queue
+
+Set-up kafka
+
+Dockerize Zookeeper and Kafka.
+docker run -d -p 2181:2181 --name zookeeper [name-image]
+docker run -d -p 9092:9092 --name kafka [name-image]
+
+connected to kafka container
+docker exec -it [container-name] bash
+
+navigate to kafka folder
+cd /opt/bitnami/kafka/bin
+
+create a topic
+./kafka-topics.sh --create --bootstrap-server localhost:9092 --topic users --replication-factor 1 --partitions 1
+	- this command creates a topic with 1 partion and a replication factor of 1
+		- because only one partition is provided key is not as important

@@ -1,0 +1,68 @@
+DQL
+	- Data Query Language
+		- "sub-sub" language/ can be considered part of DML
+	- Statements used to retrieve information from tables
+	- SELECT
+		- main operation used for querying data
+			- can use multiple clauses to filter/specify a result further
+		- where
+		- group by
+			- allows for aggregate function
+				- ie: count, sum, average...
+		- having
+			- like a where clause after aggregation
+		- order by
+		- limit
+		- offset
+
+Joins
+	- way to combine rows based on some logical relationship (columns)
+		- inner join/ join: returns all the records that have matching values in both tables
+		- left (outer) join: returns all the record from the left table and matching records from the right table
+		- right (outer) join: returns all the record from the right table and matching records from the lef table
+		- full (outer) join: returns all the records whether there is a match or not from both tables
+		- self join: joins a table with itself to combine data with the same table
+
+	- resources:
+		- https://www.postgresql.org/docs/10/tutorial-join.html
+
+JDBC
+	- Java Database Connectivity
+		- establish a connection between a java application and a database
+		- maven dependency imported is vendor specific (postgresql, oracle...)
+	- Important Class/Interfaces
+		- DriverManager (C)
+			- manages the JDBC Driver
+			- retrieve connection to a database
+				- .getConnection()
+					- pass in url, username, password
+						- hardcoded (bad practice)
+						- property file (prevent credential leak by adding a file to .gitignore)
+						- environment variables
+		- Connection (I)
+			- represents the connection to a database
+			- createStatement()/prepareStatement()
+			- close();
+		- Statement (I)
+			- represent a SQL statement
+			- .executeQuery()
+			- best used when no user input is required
+				- vulnerable to SQL injection
+		- PreparedStatement (I)
+			- represents a SQL statement, has be preprocessed to prevent SQL injection
+			- use methods to set fields
+				- setInt, setString;
+		- ResultSet(I)
+			- represents the results of a query
+			- next(), to iterate over the result set
+			- retrieve data from it using .getmethods
+	- SQL Injection
+		- placing malicious code in a SQL statement
+			- select from users where [input];
+				- input = "1; drop table tasks"
+
+DAO
+	- DataAccessObject
+		- Design pattern
+			- programming best practice to address a common programming "issue"/"problem"
+		- used to address decoupling of Java object persistence to a specific class

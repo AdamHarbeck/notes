@@ -1,0 +1,115 @@
+Exceptions
+	- represent a condition that prevents a method from completing successfully
+	- Objects created from the Exception class and its subclasses
+		- inherits from the Throwable class
+		- divided into checked/unchecked exception
+			- checked exceptions
+				- "compile time exceptions", code cannot be compiled until the exception is handled
+				- either Exception or its subclasses but not a Runtime Exception
+				- arise from circumstances outside of the programmer's control
+					- ie: FileNotFound, SQLException(from the Database)...
+			- unchecked exceptions
+				- "runtime exceptions", not checked by the compiler
+				- Runtime Exception or its subclasses
+				- arise from coding error/ can usually be prevented with a bit of logic
+
+Error
+	- also extend from Throwable
+	- Identify internal issues that cannot be recovered from
+		- bad practice to handle them/try to catch them
+		- ie: OutofMemoryError, StackOverflow
+
+Exception Handling
+	- try
+		- used to encapsulate "risky code"
+			- statements that may throw a checked exception
+	- catch
+		- used handle exception/ provide behavior in order to handle an exception of a specific type
+		- can provide multiple catch blocks
+			- order from most specific, to least specific or the most generic exception will catch all
+	- finally
+		- executes regardless of the outcome
+			- whether or not an exception is thrown
+		- used to close resources
+		- way to skip the finally block?
+			- System.exit(0);
+	- throws
+		- used in the method signature to "pass the buck"
+		- if there is not enough information to handle an exception properly at the time it's thrown
+	- try-with-resources
+		- java 8 feature
+			- declares and initializes a variable within the try
+		- allows a resource to be closed without needing a finally block
+		- the resource needs to implement the Autoclosable interface 
+
+Throwing an exception
+	- throw new [constructor for exception]();
+
+Custom Exception
+	- extends from the relevant exception
+
+Maven
+	- Project Management Tool and also a Build Automation Tool
+		- handles our dependencies for us
+			- dependency: framework/library written by other developer to be used in your project
+				- includes
+					- groupId
+					- artifactId
+					- version
+		- https://mvnrepository.com/
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.8.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	- stored locally in the ~/.m2 folder
+	- pom.xml
+		- Project Object Model
+			- metadata about the project, configuration, dependencies, build details
+			- allows for easy shared configuration across teams
+	- Build Automation tool
+		- managing the lifecycle of your application
+		- goal is to build an artifact to be deployed
+			- 3 build lifecycles
+				- clean	- removing old artifacts
+				- default - testing/packaging our application
+				- site - documentation
+
+Testing
+	- refers to the process of checking if an application is working as intented
+	- regression testing
+		- making sure that new features added to an application do not break previously written code
+			- making sure that the tests still pass
+	- positive testing: make sure that the application handles the correct input properly
+	- negative testing: making sure that the application handles the incorrect input correctly
+
+Unit Testing
+	- refers to testing an individual unit of functionality
+		- which refers to methods in Java
+	- at the bottom of the testing pyramid
+
+TDD (Test driven development)
+	- the process of writing tests to fail first to establish the functionality of your application, then writing the code to pass your tests
+		- a way to approach it
+			- define an interface
+				- write interfaces/have empty methods to establish the desired functionality
+			- write tests for those defined methods
+			- write your code to pass those tests
+		- benefits
+			- planning/establishing the desired functionality earlier on
+			- easier to find where the issues arise since the tests are already written
+
+JUnit
+	- Java Unit testing framework
+		- We'll be using JUnit5
+	- includes a lot of annotations and classes in order to write automated unit tests
+	- leverages a method called "assert" in order to check for a particular condition to determine if a test passes
+		- a test passes if the result obtained is the result desired
+			- an exception could be the desired outcome
+
+
+
+

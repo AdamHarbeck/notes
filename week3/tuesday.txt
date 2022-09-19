@@ -1,0 +1,106 @@
+Webservice
+	- any software available over a network that allows for exchange of information
+		- exposed via a consumable api
+
+Service oriented architecture (SOA)
+	- concept of breaking down applications into discrete units of functionality
+		- modular applications
+	- black-box implementation
+		- don't know how the service was implemented
+
+HTTP
+	- Hypertext Transfer Protocol 
+		- transfer protocol to exchange information over the web
+	- consists of HTTP Requests and HTTP responses
+		- Exchanged between a client/server
+	- data formats: plain text, HTML, JSON (JavaScript Object Notation), XML
+		- JSON is the standard for exchanging data
+	- HTTP Request
+		- HTTP version: 1/1.1
+		- URL
+			- resource location
+		- Headers
+			- metadata about the request
+		- Body
+			- information to include in the request
+		- Verb/Methods
+			- describes the operation to be performed
+			- 4 main ones (CRUD)
+				- GET - Read/Retrieve
+				- PUT - Update
+				- DELETE - Delete
+				- POST - Create
+	- HTTP Response
+		- HTTP version
+		- Headers
+		- Body
+			- payload(information requested)
+		- Status codes
+			- information about the status of a request
+			- 100s - 500s:
+				- 100s: informational
+				- 200s: success
+				- 300s: redirection
+				- 400s: client error
+				- 500s: server error
+			- https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
+Tomcat
+	- webserver: in charge of processing requests and sending back responses
+	- provide a web server environment in which Java code packaged within a web archive (.war)
+		- no main method
+	- Catalina
+		- Component of Tomcat
+		- Servlet Container
+			- manages our servlets and their lifecycle	
+
+Servlets
+	- Objects used to handle HTTPServletRequest and HttpServletResponse
+	- servlets are not part of the Java Standard library
+		- javax.servlets
+	- Deployment descriptor(web.xml)
+		- file that defines and maps servlets so that the webcontainer knows where to find them and what requests to map to them
+		- ie:
+	<servlet>
+		<servlet-name>hello-servlet</servlet-name>
+		<servlet-class>com.revature.web.HelloServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>hello-servlet</servlet-name>
+		<url-pattern>/hello</url-pattern>
+	</servlet-mapping>
+	- PrintWriter
+		- an object that can be retrieved from the response object
+			- resp.getWriter();
+		- can write to the HTTP Response body
+			- .write()
+				- to send databack
+					- plain text, html, JSON
+	- Static web pages
+		- can return static webpages using a RequestDispatcher object
+			- req.getRequestDispatcher("index.html").forward(req, resp);
+		- static resources need to be located in the web-app folder
+Servlet Hierarchy
+	- Servlet (I)
+		- declares the lifecycle methods of servlets
+			- init
+				- initializing the servlet, called once
+					- called when a request is made for a specific servlet that does not have an instance yet
+			- service
+				- called everytime a request is made and received by a specific servlet
+					- handles the request
+			- destroy
+				- called when the servlet is no longer needed
+					- called once
+	- GenericServlet (AC)
+		- provices default implementation for init/destroy
+		- service() is left abstract
+	- HttpServlet (AC)
+		- implements the service method
+			- routes the request to declared doGet/doPost/doDelete... based on HTTP Verb 
+	- YourServletImplementation (C)
+		- override doGet/doPost...
+			- provide your own logic to handle those requests
+
+<load-on-startup>0</load-on-startup>
+	- allows for Servlet to be instantiated at the beginning instead of waiting for first request

@@ -1,0 +1,44 @@
+Scaling
+	- Vertical
+		- provide more power/resources to an application
+	- Horizontal
+		- provide more instances of an application
+
+MicroServices Architecture (MSA)
+	- breaking down monolithic applications into smaller independent services
+		- promoting decoupling
+	- Monolith vs MSA
+		- Monolith
+			- System simplicity
+			- More centralized control
+			- Less network traffic
+			- ACID transactions
+		- MSA
+			- More efficient resource allocation and scalability
+				- scale up a specific aspect of the application rather than the whole
+			- modularity
+				- decoupling
+				- easy to upgrade/ replace
+				- no longer tied to a particular tech stack
+					- if all services are restful, tech stack no longer matters
+			- databases
+				- MSA might have databases for each of their services
+					- multiple databases may have to be updated by a single request
+					- lack of transactional operations (ACID)
+						- Basic Availability, Softstate, Eventual consistency (BASE)
+			- Higher fault tolerance
+				- if one instance is down, does not break the whole application
+			- Complex architecture
+				- a lot more overhead
+			- Chatty interfaces
+				- a lot of interservice communication over a network
+
+Spring Cloud
+	- Spring project, designed to address "issues" related to MSA
+		- provides the implementation for design patterns solving these issues
+			- Service Discovery/Registration
+			- API Gateway 
+			- Circuit Breaking
+			- Load Balancing
+			- Central Config
+			- Messaging queues

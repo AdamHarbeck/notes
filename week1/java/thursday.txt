@@ -1,0 +1,128 @@
+Polymorphism
+	- refers to the ability of objects and methods to adapt their behaviors in different contexts
+		- is resolved at compile time or at runtime
+	- method overloading
+		- creating multiple methods in the same class with the same method name but different number and/or types of parameters 
+		- compile time/ static polymorphism
+	- method overriding
+		- write a method in a subclass with the same method signature as the parent class but different implementation
+			- ie: overriding toString(), hashcode(), equals() from the Object class
+		- runtime polymorphism
+	- covariance return types
+		- when overriding a method there is the option to change the return type
+			- the new return type has to be a child/subtype of the original type
+	- upcasting/downcasting
+		- upcasting refers to instantiating/assigning a child/subclass by declaring its parent's type
+			- restricts the available methods to the methods declared in the parent class
+				- however it invokes the child's class implementation
+		- downcasting
+			- refers to instantiating/assigning an object by declaring a child class as a reference
+			- leads to issue
+
+Abstraction
+	- Hiding complex implementation behind a simple interface
+		- using methods without actually knowing how it's implemented
+	- In java, abstraction is used via the abstract and interface keywords
+		- "abstract"
+			- non-access modifier
+			- can be found in front of a class
+				- public abstract class [name] {}
+				- can no longer instantiate that class
+					- can no longer create an object of that type
+					- to push users to use more specific CONCRETE(non-abstract) classes
+				- to be inherited
+				- an abstract class can have 
+					- abstract methods and concrete methods
+					- a class does not need to have abstract methods to be abstract
+					- a class with abstract methods have to be abstract
+						- a concrete class cannot have abstract methods
+			- can be found in front of a method
+				- method without a body
+					- a method left to be implemented by a subclass
+				- cannot be private
+			- CANNOT be found in front of a variable
+		- "interface"
+			- declares behaviors for other classes to implement
+				- contract like
+			- "convention" for naming interfaces is to end the name with -able
+			- methods are implicitely abstract
+			- can have fields
+				- implicitely static and final
+					- basically constant
+			- Classes can implement as many interfaces as you want
+				- classes are limited to inheriting only one class
+				- interfaces are better contract for functionality
+				- abstract classes are better for inheritance of states
+			- Classes IMPLEMENT interfaces
+			- Classes EXTEND other classes
+			- default
+				- as of Java 8, the default keyword was added to provide a default implementation to a method declared in an interface
+
+Non-access modifiers
+	- abstract
+	- static
+		- static members do not require an instance and are initialized when the class is loaded into memory
+			- in front of a field
+				- associated with the class rather than an instance
+				- can be accessed using the class name
+			- in front methods
+				- associated with the class rather than an instance
+				- can be accessed using the class name
+	- default
+	- final
+		- in front of a class
+			- the class cannot be extended, cannot be inherited
+		- in front of a field
+			- a variable cannot be REASSIGNED once initialized
+		- in front of a method
+			- that method cannot be overriden by a subclass
+
+Datastructures
+	- Solution to work with data
+
+Collection
+	- is an interface that is considered the "super" interface from which every collection (List, Set, Queue) originate from.
+		- declares methods implemented in all collection concrete classes"
+			- add()
+			- remove()
+			- contains()
+			- size()
+	- Only work with objects (do not work with primitive variables, use Wrapper class instead)
+	- Collection (I) is not to be confused with Collections(C)
+		- Collections is a class that provides util methods to work with collections
+	- Implements Iterable, allows for a collection to be iterated over using an iterator
+	- List
+		- Interface that extends from Collection, that they can hold duplicate values, usually index based
+		- Concrete implementations
+			- ArrayList
+				- Dynamically sized array, in which elements can be added and removed
+				- ArrayList leverage indexes which makes them more efficient for retrieval operations
+			- LinkedList
+				- Consists in a series of nodes which store date and a reference to the next node
+				- better for insertion/deletion
+	- Set
+		- interface extends collection, cannot hold duplicate values
+		- HashSet
+			- "unordered", can't guarantee an order 
+		- TreeSet
+			- ordered
+				- follows the "natural" order
+					- can specify a custom order
+	- Queue
+		- interface that extends collection, follows a FIFO order (first in first out)
+		- Concrete implementation
+			- LinkedList
+				- implements both list and Queue
+			- Priority Queues
+				- ordered by priority
+		- Have more queue specific methods
+			- peek
+			- poll
+			- ...
+	- Maps
+		- interface that DOES NOT extend from Collection
+			- leverages a key value pair system
+			- they do not implement the iterable interface
+		- concrete implementations
+			- HashMap
+			- TreeMap

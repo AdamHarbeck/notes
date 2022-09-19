@@ -1,0 +1,151 @@
+Installing Spring Tools 4 on Eclipse
+	- help -> Eclipse Marketplace
+	- in find look for Spring Tools 4
+	- Install
+	- Reload Eclipse
+
+Spring Boot
+	- Spring Project
+		- built upong Spring modules within the Spring Framework
+	- make it easy to create stand-alone, production-grade Spring based Applications that you can "just run".
+	- takes an opinionated view of the Spring platform and third-party libraries. Most Spring Boot applications need minimal Spring configuration.
+	- creating Spring Boot App
+		- https://start.spring.io/
+	- embedded Tomcat Server
+		- previously, we had to package a Servlet App into a .war (web archive) to be deployed onto Tomcat (webserver)
+			- if using legacy spring applications, would have to deploy it manually
+		- now Tomcat is embedded, can just "run" the application
+			- .jar packaging
+	- "Convention over Configuration"
+		- reduces the number of configuration by assuming common conventions
+			- ie: web server runs on port 8080
+		- can also provide custom config in application.properties/.yml
+			- no more xml configuration
+			- still to override db credentials
+	- Set Up
+		- class with a main method
+			- needs to be in the parent package/base package of the application
+				- otherwise component scan won't be able to find the relevant beans
+		- @SpringBootAnnotation
+			- abstraction of 3 annotations
+				- @SpringBootConfiguration
+				- @EnableAutoConfiguration
+				- @ComponentScan
+		- in the main method
+			- SpringApplication.run([app-name].class, args);
+	- DevTools
+		- set of tools to ease application development
+			- automatic server restart
+			- live reloading of the application Context
+			- ... more
+
+
+Spring Data JPA
+	- Spring Data is a Spring Project used to address data persistence
+		- Spring Data JPA
+			- "module" within Spring Data
+			- provides standard implementations for common DAO methods
+			- Built upon Spring ORM (a module of the Spring Framework)
+				- which is built upon Hibernate
+					- which is built upon JDBC
+			- Custom methods
+				- https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.details
+			- @Query annotation if trying to do custom behavior not provided by SpringData
+		- Spring Data Hierarchy
+			- Repository(I)
+			- CrudRepository(I)
+			- PagingAndSortingRepository(I)
+			- JpaRepository(I)
+	- Setup
+		- map models using JPA annotations
+			- @Entity
+			- @Id
+			- @OneToMany...
+		- Create an interface
+			- @Repository
+			- extends JpaRepository<[Entity],[id]>
+		- providing the credentials in the application.yml
+Transaction management
+	- not specific to Spring Data Jpa
+	- @Transactional
+		- indicates that a method should be handled in the context of a Spring handled transaction
+		- properties to be overriden
+			- isolation
+				- specifies the isolation level
+			- rollbackFor
+				- specify when to rollback the transaction
+					- ie: when an exception is thrown
+			- propagation
+				- how nested transactions are handled
+	- @Transactional(propagation=Propagation.[value])
+		- REQUIRED
+			- executes in the current transaction or creates one if one doesn't exist
+			- might be the default value
+		- NESTED
+			- executes in the current transaction, separated by a SAVEPOINT
+		- REQUIRES_NEW
+			- creates a new transaction
+				- commits/rollbacks independently from others
+		- MANDATORY
+			- must execute in an existing transaction, otherwise throws an exception
+		- NEVER
+			- must execute non transactionally otherwise throws an exception if a transaction is open
+		- SUPPORTED
+			- will execute in the scope of a transaction if there is one, otherwise runs non-transactionally
+		- NOT_SUPPORTED
+			- will excute non-transactionally no matter what
+
+h2 database
+	- import the h2 dependency
+	- configure it in the application.yml
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: user
+    password: pass
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+
+Spring profiles
+	- allows us to use different version of beans in different environment
+		- ie:
+			- dev profile
+				- for development, testing
+				- may just connect to an h2 db
+			- prod profile
+				- for end users
+				- actually connects to prod db
+	- in pom.xml
+		- set profiles
+	- in application.yml
+		- profiles
+	- switching from dev to prod
+		- while packaging application, specify which environment to use
+			- mvn package -Pprod
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

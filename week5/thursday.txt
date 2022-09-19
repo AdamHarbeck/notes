@@ -1,0 +1,29 @@
+Services
+    - Angular entities used to reuse code/logic in components  
+        - ie: making an API call (http request)
+    - services are injected into other classes (component, another service)
+        - constructor injection
+            - meaning inject in the constructor
+                - constructor(private auth: AuthService)
+            - services are injected using Dependency injection
+                - meaning that the framework will be in charge of resolving dependencies
+    - decorator
+        @Injectable({
+          providedIn: 'root'
+        })
+            - different types of injectors available
+                - root: the service is a singleton/ one per application
+                - module: service is reused within a module
+                - component: 1 service per component
+
+Making HTTP Requests in Angular
+    - can still use fetch!
+    - HttpClient also allows use to make HTTP Requests
+        - import the HttpClientModule in the app.module
+        - returns an Observable
+            - stream of data returned from an async http call
+            - follow a publisher/subscriber design pattern
+                - any entity subscribed to the observable can retrieve the information
+                - lazy, which means that the call itself is only made when an observable is subscribed to
+    - .pipe - allows to return an Observable
+    - .map - allows to use to "map" a JSON object to a class (ie: user.ts)

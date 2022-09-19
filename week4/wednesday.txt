@@ -1,0 +1,46 @@
+Object states in Hibernate
+	- transient
+		- refers to an object not associated with the database
+		- new Object();
+	- persisted
+		- object associated with a session and matches what is found in the database
+		- use a method to persist an object/a session method on a object
+	- detached
+		- object persisted, represented in the database but no longer associated with a session
+		- session.close()
+
+Native Query
+	- writing plain SQL, NativeQuery<T>
+	- bad practice
+		- tightly couples implementation with a specific SQL dialect
+
+HQL
+	- Hibernate Query Language
+		- a more OO way to query data compared to SQL dialects
+			- SQL vendor independent
+	- Query<T>
+
+Named Query
+	- define a query in the model/entity
+		- in general, used in project where the architecture is not separated by layer
+
+Criteria API
+	- Java-based way to programatically query data in a more OO way
+		- DQL
+
+Caching
+	- "storing for quicker access"
+	- stores the results of a query from the database to save time
+		- "buffer memory" that lies between the app and the database
+	- Types of caching
+		- L1 - Level 1
+			- session level
+			- automatic and mandatory
+				- if multiple updates are made onto an object within a session hibernate delays the actual update as long as possible
+			- closing the session removes the caching
+		- L2 - Level 2
+			- session factory level
+				- available within the lifetime of the application
+			- optional
+				- meed to leverage a 3rd party dependency for session factory level caching
+					- ie: ehcache

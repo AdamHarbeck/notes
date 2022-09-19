@@ -1,0 +1,5 @@
+Centralized Configuration
+	- leverages a configuration server to store all of our services configuration
+		- keep track of all the configurations in one single repository (ie: GitHub)
+			- easy to maintain, easy to reuse
+	- Spring Cloud Config

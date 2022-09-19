@@ -1,0 +1,178 @@
+Database
+	- collection of related data
+	- allows us for the preservation of data past the lifetime of an application
+
+DBMS
+	- Database management systems
+		- collection of applications used to create and maintaint databases
+			- store data in a structured format
+			- allows for concurrent use of the data
+			- control access of the data
+			- maintain data integrity
+			- data back up and recovery
+	- RDBMS
+		- Relational Database Management System
+			- consists of a collection of tables where tables are connected and reference one another via keys
+				- Table
+					- rows
+						- particular instances of a data category
+							- records, data entities
+					- columns
+						- category of data/fields
+SQL
+	- Structured Query Language
+		- Allows us to interact with Data Entity
+	- SQL implementations
+		- different "flavors" of SQL, arising from different vendors and platforms available
+			- ie: PostgreSQL, OracleSQL, MySQL....
+			- syntax may vary slightly/datatypes
+				- we're going to be using PostgreSQL
+Important distincting:
+	- PostgreSQL is the RDBMS
+	- DBeaver is a tool to visualize and interact with database entities (GUI/IDE)
+		- IS NOT A DATABASE
+
+PostgreSQL
+	- free and open-source
+	- datatypes - https://www.postgresql.org/docs/10/datatype.html
+		- Character types
+			- CHAR
+				- fixed length, blank padded
+			- VARCHAR
+				- variable length, with limit
+			- TEXT
+				- variable length, with no limit
+		- Numberic types
+			- INTEGER
+			- DECIMAL
+				- allows for floating point value, user specified
+		- Temporal types
+			- DATE
+			- TIME
+			- TIMESTAMP
+				- Date and time
+		- Auto-incrementing integers
+			- SERIAL
+
+SQL Sublanguages
+	- refers to the different types of operations to be performed on database entities
+	- for the sake of this training there are 5 SQL sublanguages
+		- DDL, DCL, DML, DQL, TCL
+
+Database schema
+	- a collection of tables, views, trigger, functions... (database entities)
+	- all belong to one db
+		- a database may have multiple schema
+		- https://database.guide/wp-content/uploads/2016/06/sakila_full_database_schema_diagram.png
+
+DDL
+	- Data Definition Language
+	- Statements used to construct/edit/delete the database/schema/users/tables...  (Data entities)
+		- CREATE
+		- ALTER
+		- DROP
+		- TRUNCATE
+			- removing data from table, keeping the entity
+
+Keys
+	- primary keys
+		- a column or combination of columns with acts as a unique identifier to a record in the table
+		- composite keys
+			- combination of columns to act as a primary key
+		- unique and not null
+	- foreign keys
+		- used to illustrate relations between records
+			- "points"/"references" a record in another table
+	- candidate keys
+		- any columns that could be a primary key
+
+Constraints
+	- limits the type of data entered in tables to ensure the accuracy and reliability of the data
+		- primary key
+			- UNIQUE/NOT NULL
+		- UNIQUE
+			- column's value cannot be reused
+		- NOT NULL
+			- column's value cannot be empty/null
+		- CHECK(CONDITION)
+			- ensure that a condition is met
+				- ie: value cannot be <0
+		- references
+			- foreign key relationships
+Domain integrity
+	- values must fall within the constraints placed on the columns 
+	- make sure that the values support our business logic/logic of applications
+
+Referential integrity
+	- want the database to be working properly within the constraints of a foreign key relationship
+	- don't want records to referent another record that does not/no longer exists
+		- delete on cascade
+			- deleting records and record referencing that record 
+
+Multiplicity
+	- refers to relationships between tables and how to define them using SQL
+		- one-to-one
+			- exactly one row references another row
+			- ie: one SSN per user
+		- one-to-many/many-to-one
+			- exactly one row in a table is referenced by potentially many rows
+			- ie: one team has many players, but each player has only one team
+				- the FK would be found in the player's table
+		- many-to-many
+			- several rows can be referenced by several rows
+				- ie: users can have many tasks, tasks can have multiple users
+			- junction table
+				- table that has a primary key which is a composite key of multiple foreign keys
+
+DCL
+	- Data Control Language
+	- manage user permissions within a database
+		- GRANT and REVOKE to define power/access to schema/tables/... to users 
+
+DML
+	- Data Manipulation Language
+	- statements used to perform record level operations
+		- to interact with records within tables
+	- CRUD operations
+		- create/read/update/delete
+		- INSERT
+			- create operation
+			- insert into [table_name] ([col1_name], ...) values ([col1_value],...);
+				- generating mock data
+					- mockaroo.com
+		- UPDATE
+			- update operation
+			- update [table_name] set [col1_name] = [col1_value] where [condition];
+				- if no where clause is specified, will update every record in the table.
+		- DELETE
+			- delete operation
+			- delete from [table_name] where [condition];
+				- if no where clause is specified, will delete every record in the table.
+
+Normalization
+	- refers to a database design technique that reduces redundancy and ensures that data is stored logically
+	- consists in dividing larger tables in smaller tables and linking them using relationships
+		- we're going to focus on the first 3 Normal Forms(NFs)
+			- usually most databases are considered sufficiently normalized after NF3
+		- 1 NF
+			- each table needs a primary key
+			- each table should be comprised of atomic values
+				- values cannot be broken down into smaller pieces
+			- no repeated columns (columns for the same purpose)
+		- 2 NF
+			- must be 1 NF
+			- no partial dependencies
+				- removing values that depend on only one part of the composite key
+		- 3 NF
+			- must be 2 NF
+			- no transitive dependency
+				- field/column that can be determined based on other fields
+
+					Salestaff
+EmployeeId | SalesPerson | SalesOffice(street, city, state, zip) | Age | DoB | Customer1 | Customer 2 | Customer 3
+
+
+Resources: 
+	- https://www.postgresqltutorial.com/
+	- https://www.postgresql.org/docs/10/datatype.html
+	- https://www.tutorialspoint.com/postgresql/postgresql_create_table.htm

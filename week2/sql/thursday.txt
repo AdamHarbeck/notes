@@ -1,0 +1,93 @@
+TCL
+	- Transaction Control Language
+		- transactions
+			- consist in combining multiple database operations into one unit of work
+			- (PostgreSQL treats every SQL statement as their own transaction unless specified otherwise)
+		- Relevant Statements
+			- begin
+				- can indicate the start of a transaction
+					- if not included, one can be provided implicitely
+				- put statement(s) to be executed as one unit of work
+					- between begin and commit	
+			- savepoint
+				- saving the state of the database at a certain point WITHIN the transaction
+			- rollback []
+				- reverts the state of database to a previous commit or savepoinr
+			- commit
+				- saving/persisteing changes to a database at the end of the transaction
+		- https://www.postgresql.org/docs/10/tutorial-transactions.html
+		- Properties of a transaction: ACID
+			- Atomicity
+				- one unit, transaction should be completed as a whole or not at all
+			- Consistency
+				- database should be in a valid state before and after the transaction
+					- in regards to database constraints
+					- in regards to the business logic
+			- Isolation
+				- a transaction should not interfere with another transaction
+				- results of transactions executing concurently should be the same as if they were executed in sequence
+					- Transaction Isolation Levels
+			- Durability
+				- Commits are final, changes are persisted to the database
+
+Scalar and aggregate functions
+	- scalar
+		- used on a single input to retrieve a single input
+		- length, upper, lower, round, substr
+	- aggregate
+		- used on a group of inputs to retrieve a single input
+		- count, avg, max....
+		- GROUP BY clause
+			- used with aggregate functions
+				- select [col_name], count(*) from [table] group by [col_name];
+		- HAVING clause
+			- used with aggregate function to further filter the result set (after aggregation)
+				select user_assigned_id, count(*) 
+				from tasks t 
+				-- where clause has to be before aggregation
+				group by user_assigned_id
+				having count(*) > 1;
+
+
+
+
+slf4j
+	- simple logging facade for Java
+	- provides a series of interfaces to work with different logging implementations
+		- abstraction layer
+			- ie: at dev time, the logging framework used might be different that the one used in production
+				- slf4j will redirect to the underlying implementation
+
+Log4j2
+	- Java logging framework, successor of log4J
+	- Logging
+		- capturing and persisting information regarding the state of an application
+			- making it available for analysis at a later time
+	- Main Components of Log4j2
+		- Loggers
+			- responsible for recording log events and forwarding them to the appropriate appender
+			- by default, a root logger is provided
+				- class specific loggers are better practice
+		- Appenders
+			- responsible to delivering the log event to their destination target
+				- ie: to console, to file... etc.
+		- Layouts
+			- responsible for the formatting of the event
+				- returns a byte array to be turned into a String 
+				- https://logging.apache.org/log4j/2.x/manual/layouts.html
+	- Logging levels
+		- Trace
+			- debug messages, used to capture the flow throughout an application
+				- mainly used for debugging
+		- Debug
+			- identifying a general debugging even, information helpful to debugging
+		- Info
+			- identifying a general event
+		- Warning
+			- identifying an event that may lead to an error
+		- Error
+			- identifying an exception that occured in the application, something that can be recovered from
+		- Fatal
+			- identifying a server error that prevents the app from continuing its execution
+
+	- https://logging.apache.org/log4j/2.x/manual/configuration.html

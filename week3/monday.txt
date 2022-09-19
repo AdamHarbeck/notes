@@ -1,0 +1,105 @@
+HTML
+    - Hypertext Mark-Up Language
+        - Not a programming Language
+        - Mark-up language
+    - Defines the structure of a webpage using HTML tags
+        - Tags in HTML follow a nested structure
+        - basic structure of HTML document
+            - Doctype declaration
+                    - tag that indicates that the file is an HTML document
+                    - (optional as of html5)
+            - html
+                - head
+                    - metadata about your webpage
+                - body
+                    - information to be displayed on the webpage
+    - Elements in HTML have attributes
+        - these are used to provide more information about the tag 
+            - global attributes
+                - present in all html tags
+                    - class, id, style
+            - local attributes
+                - present in certain tags
+                    - href, src
+        - ie: 
+            <img src="..."/>
+            - the img element has an src attribute
+    - Semantic Elements 
+        - concept introduced in html5 
+        - providing more meaning to tags   
+            - helps with accessibilities
+        - names such as
+            - nav, main, section, footer, header... instead of divs everywhere
+    - Heading
+        - h1 - h6
+            - biggest to smallest
+    - self-closing tags
+        - ie: img   -> <img />
+    - lists
+        - ul - unordered lists
+        - ol - ordered lists
+            - li - list item
+    - tables
+        - table tag
+            - nesting tr/th
+                - td for table data
+    - forms
+        - tag that can be used to capture user input and submit information
+
+CSS
+    - Cascading Style Sheets
+        - style is loaded from top to bottom
+    - adds looks/style to HTML
+        - HTML is the structure of the document and CSS is the styling
+    - add CSS
+        - inline
+            - directly in the HTML element using attributes
+            - <h1 style="color: blue;">Kevin Tran Huu</h1>
+        - internally
+            - in the HTML document, declare a style tag
+    <style>
+        selector {
+            property1: value;
+            property2: value;
+        }
+    </style>
+        - externally
+            - best practice
+            - <link rel="stylesheet" href="./stylesheets/main.css"/>
+    - Selectors
+        - target a specific element to be styled
+            - element/tag Selectors
+            - class (.className)
+            - id (#id)
+            - target the elements more specifically
+                - ie: nested elements...
+                - https://www.w3schools.com/cssref/css_selectors.asp
+        - styles apply based on specificity, most speficic rule will override
+                - most to least: id > class > tag
+    - CSS Box Model
+        - margin > border > padding > content
+
+Bootstrap
+    - library of classes that can be leveraged as premade templates
+        - import bootstrap into html page
+        - leverage bootstrap classes in order to style elements
+    - Responsive Web Design
+        - website/webpages that automatically adapt to different screen sizes/types
+        - Bootstrap uses a grid system in the background
+
+S3
+    - Simple Storage Service
+        - Highly scalable Storage 
+        - High durability and availability
+    - Can access programmatically using AWS SDK
+    - Can host static webpages
+    - https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html
+Resources:
+	- https://www.w3schools.com/
+	- https://developer.mozilla.org/en-US/docs/Web/HTML
+	- RevPro
+
+
+Optional VsCode add-on:
+	- Live Server
+		- allows for automatic refresh of HTML page in browser

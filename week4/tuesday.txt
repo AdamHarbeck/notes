@@ -1,0 +1,119 @@
+ORM
+	- Object-Relational Mapping
+		- converting between incompatible types of objects and database objects
+
+JPA
+	- Java Persistence API
+		- Interfaces meant for mapping/managing relational data with Java Objects
+	- "Concept" rather than a tool
+		- describes which objects should be persisted why/how
+
+Hibernate
+	- ORM framework for Java
+	- using annotations/xml files to sync java classes to db tables
+	- Benefits
+		- Abstraction of JDBC
+			- uses JDBC under the hood
+			- abstracts away SQL queries
+				- abstracts away SQL dialect (ie: PostgreSQL, Oracle...)
+			- reduces boiler plate code
+		- Caching
+			- store query information in the server
+		- Leverages HQL (Hibernate Query Language)
+			- dialect specific to hibernate
+			- can also use native sql if desired (bad practice)
+	- Classes/interfaces in Hibernate
+	- Configuration (C)
+		- allows you to create session factories using a config file/classes
+			- hibernate.cfg.xml
+	- SessionFactory (I)
+		- singleton in charge of creating session objects using a factory design pattern
+	- Session (I)
+		- represents a connection to the database
+	- Transaction (I)
+		- managing ACID compliant transactions
+		- from session object
+			- .beginTransaction()
+				- commit()
+				- rollback()
+	- Query (I)
+		- write complex CRUD operations using HQL
+	- Criteria (I)
+		- using a programatic way to write SQL statements
+	
+	- hibernate.cfg.xml
+		- config file for hibernate
+			- hibernate-configuration - root tag
+			- session-factory
+				- provide db credentials
+				- hbm2ddl.auto
+					- CREATE - drops all existing tables and objects provided by your application and recreates it
+					- UPDATE - doesn't delete anything but adds to the schema if needed
+					- VALIDATE - makes sure that everything is there as expected
+					- NONE - hibernate doesn't do ddl
+					- ... 
+		- Object mapping (using xml/ annotation based)
+			- xml
+				- create xml file: User.hbm.xml
+					<hibernate-mapping>
+						<class name="com.revature.models.User" table="users">
+							<id name="id" column="user_id"><generator class="increment"></id> 
+							<property name="username" column="username"></property>
+						</class>
+					</hibernate-mapping>
+				- link it in the hibernate.cfg.xml
+					- <mapping resource="User.hbm.xml"></mapping>
+			- annotation-based
+				- <mapping class="com.revature.models.User"></mapping>
+				- in the class, use JPA imported annotations to map the class
+					- ie:
+						- @Entity: must go at the top opf the class to be mapped to a table
+						- @Table: allows the table to be named differently than the class name
+	- Lazy Loading vs Eager fetching
+		- when fetched eagerly, the entire object is retrieved as soon as the "parent" is retrieved
+		- when fetched lazily, a proxy is retrieved until that object is used in the session
+			- proxy: dummy/empty object aside from its id
+
+	- DAO/CRUD methods from hibernates
+		- .get() vs .load()
+			- .get()
+				- eagerly fetches information from the database
+				- returns null if not found
+			- .load()
+				- lazily fetches an object
+				- throw an exception if the object is not found
+		- .update() vs merge()
+			- update()
+				- void return
+				- if update an object with no id in the database, throws an exception
+				- if persistent object in same session has the same id, throws an exception
+			- merge()
+				- returns the merged object
+				- if an object in the same session exists with the same id, merge the two
+		- .save() vs persist()
+			- save()
+				- returns object with the id
+			- persist()
+				- void
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,125 @@
+Java Memory Management
+	- Stack
+		- Datastructure that follows a LIFO pattern (Last In First Out)
+		- Holds primitive and reference variables
+		- once the scope of a method is over, the variable "pops" off
+			- naturally managed
+	- Heap
+		- Object storage
+		- almost anything that is not a primitive/ref type is an object
+		- String Pool
+			- for String literals
+				- String s = "s";
+		- Managed by the Garbage collector
+	- Java is a pass by value language
+		- passing a variable into a method uses the value of the variable rather than the variable itself
+
+Garbage Collection
+	- free up memory/resources once they're no longer referenced
+	- Garbage Collector is a daemon thread
+		- thread running in the background
+		- removes objects without references in the heap
+	- Garbage cannot be forced, it can only be suggested using System.gc()
+	- finalize() - the last method called upon an object before it is garbage collected
+		- people don't really use this anymore
+
+Packages
+	- folder/directory
+		- structure
+	- resolve naming conflicts
+	- used to define access
+		- using access modifiers
+	- group items based on what they do/logical structure
+		- packages are usually organizes based on the problem that they solve
+			- separation of concern
+				- a package that holds models/entities
+				- a package that holds all classes related to data access/storage/interacting with a database
+				- a package that holds all classes related to business logic (services)
+				- a package that holds all classes related to interacting with the web
+
+String
+	- String is a class and therefore we have String objects
+		- array of characters
+	- Strings are usually stored in the String Pool (which is in the heap)
+		- this allows Java to reuse the same String object for repeated instances
+			- String s = "s"; // stored in the String Pool
+			- String s = new String("s"); // stored in the Heap, but not string pool
+		- .intern()
+			- checks if a String exists in the string pool if yes returns a reference to it, otherwise creates it in the pool and rreturns that reference
+	- immutable
+		- value of a string cannot be changed
+
+
+StringBuilder/StringBuffer
+	- mutable alternatives to Strings with methods that allow for manipulation
+	- StringBuilder - not ThreadSafe, faster
+	- StringBuffer - ThreadSafe, slower
+
+Scanner
+	- Class in Java that can be used to capture user input via the console
+		- files, input streams...
+	- can parse for different types, read a line...
+	- MAKE SURE TO CLOSE YOUR SCANNER WHEN DONE USING IT
+		- avoid memory leaks
+	- PRO TIP: use one scanner per input stream, otherwise might run into issues
+
+OOP
+	- Programming language paradigm which relies on classes and objects to model real world objects
+		- 4 Pillars of OOP
+			- Encapsulation
+			- Inheritance
+			- Polymorphism
+			- Abstraction
+
+Class
+	- Blueprint/Template for an object, define state and behaviors
+	- members of a class
+		- variables and methods of that class
+			- Object/Instance members 
+				- instance variables
+				- instance methods
+			- Class/Static members
+				- static variables
+				- static methods
+
+Object
+	- Instance of a class
+		- can be created using the "new" keyword
+			- invokes the constructor of a class to initialize an object
+	- Beware the Object class
+
+Encapsulation
+	- refers to the ability for an object to protect its state and behaviors
+	- can achieve by defining the accessibility of class members using access modifiers 
+		- set variables to private
+	- setters/getter methods to interact with the properties
+
+Access modifiers
+	- specify which classes have access to an entity (class, member of a class...)
+		- public - least restrictive, all of the classes within the application have access
+		- protected - all of the classes within the same package and all of the subclasses have access
+		- "default" (represented by not putting any keyword) - all the classes within the same package
+		- private - most restrictive, only accessible within the class itself
+
+Inheritance
+	- when subclasses/children classes adopt the states/behaviors from a super/parent class
+	- deriving classes allows for code reusability
+		- DRY principle (do not repeat yourself)
+
+	- keyword: extends
+	- By default everyclass extends the Object class
+		- as a result all of the classes inherit methods from the Object class
+			- equals, toString, hashcode 
+				- to be overriden	
+	- by default the first line of every constructor is always a call to the parent's constructor: super()
+	- this/super
+		- this
+			- reference to the instance
+		- super
+			- reference to the parent
+				- ie: super() => reference to the parent's constructor
+				super.toString(); => calls the implementation of the toString method from the parent class
+	- Java does not support multiple inheritance
+
+
+

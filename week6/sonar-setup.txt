@@ -1,0 +1,43 @@
+Installing Java 11 on ec2
+- sudo amazon-linux-extras install java-openjdk11
+- sudo alternatives --config java
+	- select the desired version
+- sudo yum install java-11-openjdk-devel
+- sudo alternatives --config javac
+	- select the desired version
+
+- sudo service jenkins restart
+
+
+
+Setting up Sonar Cloud Analysis
+	- Sonar Cloud
+		- Add/New
+			- Analyze New Project
+				- Select Organization
+					- Select Repository
+						- Set Up On Sonar Cloud
+		- Select With other CI Tools	
+			- Maven
+				- Follow the instructions highlighted.
+	- In Jenkins
+		- From Dashboard
+			- Manage Jenkins
+				- Manage Plugins
+					- Install SonarQube Scanner for Jenkins
+			- Create a Credentials with your Sonar Token obtained from Sonar Cloud
+			- Manage Jenkins
+				- Global Tool Configuration
+					- SonarQube Scanner installations
+						- Add SonarQube Scanner
+							- give it a name
+							- Check Install automatically
+							- Install from Maven Central
+						- Apply
+						- Save
+				- Configuration
+					- Under SonarQube servers
+						- use the name of your SonarQube Scanner
+						- Server URL is:
+							- https://sonarcloud.io
+						- Server Authentication token
